@@ -1,0 +1,88 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+img {
+    object-fit: contain;
+}
+
+.title {
+    margin-top: 150px;
+    margin-left: 100px;
+    color: #3A5A40;
+}
+
+.container-profil {
+    margin-left: 100px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    background-color: #DAD7CD;
+    border-radius: 15px;
+}
+
+.left-profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-profil p {
+    color: #3A5A40;
+    font-weight: bold;
+}
+
+.profil-avatar {
+    border-radius: 100%;
+    border: #000000 solid 5px;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    height: 340px;
+}
+
+.right-profil p {
+    padding-bottom: 20px;
+    font-size: 150%;
+}
+
+.green {
+    color: #588157;
+}
+
+.fa-upload {
+    color: #3A5A40;
+    margin-top: 30px;
+    font-size: 150%;
+    line-height: 0.1;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: #588157 solid 1px;
+    background-color: #588157;
+    color: #FFFFFF;
+    font-size: 120%;
+}
+
+button:hover {
+    background-color: #A3B18A;
+    color: #000000;
+
+}
+
+button:active {
+    background-color: #A3B18A;
+    color: #FFFFFF;
+
+}
