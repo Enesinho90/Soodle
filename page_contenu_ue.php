@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contenu UE</title>
+  <title>Conten^p^p^pu UE</title>
   <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body id="page-contenu-ue">
