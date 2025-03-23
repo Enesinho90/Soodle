@@ -37,7 +37,6 @@
 * {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
     font-style: normal;
 }
 
@@ -160,4 +159,27 @@ img {
 .fa-user,
 .fa-arrow-right-to-bracket {
     padding-right: 20px;
+}
+
+@media (max-width:500px) {
+    .fa-bell {
+        display: none;
+    }
+
+    .profil-informations {
+        display: none;
+    }
+
+    #profil-popup {
+        height: auto;
+    }
+
+    .acces-profil,
+    .disconnect {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 150px;
+
+    }
 }
