@@ -14,7 +14,7 @@
 <main>
   <?php include("initialize.php"); ?>
 
-  <!-- ====== Section : contenu-ue ====== -->
+  <!-- ====== Sectiodsdsdn : contenu-ue ====== -->
   <section id="contenu-ue">
     
     <!-- Bouton de retour -->
