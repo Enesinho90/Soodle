@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>AContesdsddsdsnu UE</title>
+  <title>Contenu UE</title>
   <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body id="page-contenu-ue">
