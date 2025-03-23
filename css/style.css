@@ -1,0 +1,110 @@
+/* ========== Structure principale de la section ========== */
+#contenu-ue {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    min-width: 300px;
+    margin: 150px auto 0 auto; /* centré horizontalement */
+}
+  
+  /* ========== Boutons principaux ========== */
+.button-style,
+.button-add {
+    background-color: #588157;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+  
+  /* Bouton de retour */
+.button-style {
+    width: 120px;
+    height: 60px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+  /* Bouton d'ajout */
+.button-add {
+    font-size: 30px;
+    padding: 10px 15px;
+    flex-shrink: 0;
+}
+  
+  /* Hover commun aux boutons */
+.button-style:hover,
+.button-add:hover,
+.recherche-btn:hover {
+    background-color: #3a5a40;
+}
+  
+  /* ========== Barre de recherche + ajout ========== */
+  .barre-recherche-ajouter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+  
+  /* Conteneur de la barre de recherche */
+.barre-recherche-container {
+    display: flex;
+    max-width: 350px;
+    border: 1px solid #588157;
+    border-radius: 5px;
+    overflow: hidden;
+}
+  
+  /* Input de recherche */
+.barre-recherche {
+    flex: 1;
+    box-sizing: border-box;
+    border: none;
+    padding: 15px 60px 15px 20px;
+    font-size: 16px;
+}
+
+.barre-recherche::placeholder {
+    color: #bab8b8;
+    opacity: 0.8;
+}
+
+  /* Bouton de recherche */
+.recherche-btn {
+    width: 50px;
+    background-color: #588157;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+  
+  /* Icône de recherche */
+.recherche-btn > .fa-solid.fa-magnifying-glass {
+    font-size: 16px;
+}
+  
+  /* ========== Textes / Titres ========== */
+#contenu-ue > h1 {
+    color: #3a5a40;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+  
+.participants {
+    color: #a3b18a;
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+  
+.publications {
+    color: #3a5a40;
+    font-size: 2em;
+}
+  
