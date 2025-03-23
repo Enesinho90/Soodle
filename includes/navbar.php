@@ -14,7 +14,7 @@
     <div class="profil-informations">
         <img class="avatar-onclick" src="avatar.jpg" alt="avatar">
         <div class="person">
-            <p class="username">Nom Prédsdsdsdsdnom</p>
+            <p class="username">Nom Prénom</p>
             <p class="usermail">mail@mail.fr</p>
             <p class="userrole">Administrateur</p>
         </div>
