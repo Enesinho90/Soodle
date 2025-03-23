@@ -9,7 +9,7 @@
 
   <?php include("initialize.php"); ?>
 
-  <h1>Bienvenue dans l'UE</h1>
+  <h1>BienveEZEEERERnue dans l'UE</h1>
 
   <button id="test" type="button">Hallo</button>
 
