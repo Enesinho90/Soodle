@@ -10,11 +10,11 @@
 
 </head>
 <body id="page-contenu-ue">
-  
+
 <main>
   <?php include("initialize.php"); ?>
 
-  <!-- ====== Sectiodsdsdn : contenu-ue ====== -->
+  <!-- ====== Section : contenu-ue ====== -->
   <section id="contenu-ue">
     
     <!-- Bouton de retour -->
