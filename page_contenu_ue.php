@@ -10,9 +10,8 @@
 
 </head>
 <body id="page-contenu-ue">
-  <main>
-    <?php include("initialize.php"); ?>
-    <main>
+  
+<main>
   <?php include("initialize.php"); ?>
 
   <!-- ====== Section : contenu-ue ====== -->
@@ -49,11 +48,6 @@
   </section>
   <!-- ====== Fin section : contenu-ue ====== -->
 </main>
-
-
-  </main>
-
-  
 
 
   <script src="js/script.js"></script>
