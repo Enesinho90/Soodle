@@ -44,10 +44,14 @@
   <section id="posts">
     <!-- Un post -->
     <div class="post">
-      <div class="titre-logo">
-        <i class="fa-regular fa-message"></i>
-        <h3>TD1 - Validation/Remise à Niveau</h3>
+      <div class="titre-logo-supp">
+        <div class="titre-logo">
+          <i class="fa-regular fa-message"></i>
+          <h3>TD1 - Validation/Remise à Niveau</h3>
+        </div>
+        <i class="fa-solid fa-xmark"></i>
       </div>
+     
       <p>Posté par M.Dupont il y a 2j</p>
       <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
       <div class="ajouter-modifier">
@@ -58,9 +62,12 @@
     </div>
     <!-- Deuxième post identique pour l'exemple -->
     <div class="post">
-      <div class="titre-logo">
-        <i class="fa-regular fa-message"></i>
-        <h3>TD1 - Validation/Remise à Niveau</h3>
+      <div class="titre-logo-supp">
+        <div class="titre-logo">
+          <i class="fa-regular fa-message"></i>
+          <h3>TD1 - Validation/Remise à Niveau</h3>
+        </div>
+        <i class="fa-solid fa-xmark"></i>
       </div>
       <p>Posté par M.Dupont il y a 2j</p>
       <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
