@@ -1,0 +1,184 @@
+.navbar {
+    background-color: #344E41;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-left {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    font-size: 120%;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 120%;
+    margin-right: 10px;
+}
+
+.fa-bell {
+    color: #DAD7CD;
+    font-size: 130%;
+}
+
+.fa-bell:hover {
+    color: #588157;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+img {
+    object-fit: contain;
+}
+
+.logo-navbar {
+    width: 80px;
+}
+
+.pages-navbar {
+    color: #FFFFFF;
+}
+
+
+.avatar {
+    height: 65px;
+    width: 65px;
+    border-radius: 100%;
+    border: #FFFFFF 1px solid;
+    cursor: pointer;
+}
+
+
+
+.link-to-page {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.link-to-page:hover {
+    color: #588157;
+    text-decoration: underline;
+
+}
+
+.link-to-page:active {
+    color: #DAD7CD;
+
+}
+
+#profil-popup {
+    background-color: #344E41;
+    width: 500px;
+    display: none;
+    height: 320px;
+
+    position: fixed;
+    top: 75px;
+    right: 0;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.profil-informations {
+    display: flex;
+    justify-content: flex-start;
+    gap: 35px;
+    padding: 10px;
+}
+
+.avatar-onclick {
+    width: 180px;
+    height: 180px;
+    border: #DAD7CD 3px solid;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+
+.person {
+    margin-top: 30px;
+    margin-left: 30px;
+
+}
+
+.username {
+    color: #FFFFFF;
+    font-size: 150%;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 2px;
+    line-height: 0.9;
+}
+
+.usermail {
+    color: #A3B18A;
+    margin-bottom: 2px;
+    line-height: 0.9;
+}
+
+.userrole {
+    color: #FFFFFF;
+    line-height: 0.9;
+}
+
+.acces-profil,
+.disconnect {
+    color: #FFFFFF;
+    margin-left: 50px;
+}
+
+.acces-profil a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.acces-profil a:hover {
+    text-decoration: underline;
+}
+
+.fa-user,
+.fa-arrow-right-to-bracket {
+    padding-right: 20px;
+}
+
+@media (max-width:500px) {
+    .fa-regular.fa-bell {
+        display: none;
+    }
+
+    .profil-informations {
+        display: none;
+    }
+
+    #profil-popup {
+        height: auto;
+    }
+
+    .acces-profil,
+    .disconnect {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 150px;
+
+    }
+}
+
+@media (max-width:450px) {
+    .navbar-left {
+        gap: 25px;
+    }
+
+
+}

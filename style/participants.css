@@ -1,0 +1,114 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+img {
+    object-fit: contain;
+}
+
+.container {
+    margin-top: 150px;
+    margin-left: 100px;
+    color: #3A5A40;
+}
+
+.title {
+    padding-top: 20px;
+    margin-left: 100px;
+    color: #3A5A40;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: solid 1px #588157;
+    background-color: #588157;
+    color: #FFFFFF;
+}
+
+button:hover {
+    background-color: #A3B18A;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid #A3B18A;
+    color: black;
+}
+
+.title2 {
+    color: #3a5a40;
+    font-weight: normal;
+    margin-left: 100px;
+    font-size: 36px;
+}
+
+.filters {
+    font-size: 22px;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.filters button {
+    padding: 4px 10px;
+}
+
+.filters input {
+    width: 300px;
+    margin-left: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: solid 1px #588157;
+}
+
+.filters select {
+    font-size: 22px;
+    width: 300px;
+    margin-left: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: solid 1px #588157;
+}
+
+table {
+    margin-top: 100px;
+    width: 80%;
+    margin-left: 10%;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.image-table {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+@media (max-width:600px) {
+    .image-table {
+        display: none;
+    }
+
+    td {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    table {
+        width: 100%;
+        margin: 0%;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+
+}
