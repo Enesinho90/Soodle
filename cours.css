@@ -44,7 +44,7 @@ img {
 
 .course a:hover {
     color: #FFFFFF;
-
+    transition: 0.5s;
 
 }
 
@@ -111,6 +111,7 @@ button:hover {
     background-color: #A3B18A;
     border: 1px solid #A3B18A;
     color: #000000;
+    transition: 0.5s;
 }
 
 button:active {
@@ -121,4 +122,27 @@ button:active {
 
 .professor {
     color: #588157;
+}
+
+@media (max-width: 700px){
+    .container-courses{
+        margin-left: 5%;
+    }
+    .course{
+        width: 400px;
+    }
+}
+@media (max-width: 500px){
+    .course{
+        width: 350px;
+    }
+}
+
+@media (max-width: 400px){
+    .course{
+        width: 350px;
+    }
+    .container-courses{
+        margin-left: 0px;
+    }
 }
