@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="e">
 
 <head>
     <meta charset="UTF-8">
