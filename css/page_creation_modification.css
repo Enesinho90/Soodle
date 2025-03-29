@@ -3,11 +3,23 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
+    height: 110vh;
   }
 main section {
     width: 80%;
 }
-.button-style {
+/* --- Section : création / modification ---*/
+
+/* TITRE SECTION */
+#creation_modification > h1 {
+    color: #3a5a40;
+    font-weight: 900;
+}
+
+/* BOUTONS GÉNÉRAUX */
+.button-style,
+#submit-message-file {
     background-color: #588157;
     border: none;
     border-radius: 8px;
@@ -15,7 +27,16 @@ main section {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-  
+
+.select {
+    background-color:#3A5A40;
+}
+.select:hover {
+    background-color: #588157;
+}
+
+
+/* STYLE DES BOUTONS */
 .button-style {
     width: auto;
     padding: 25px;
@@ -26,12 +47,133 @@ main section {
     justify-content: center;
 }
 
-.button-style:hover {
+/* EFFET HOVER BOUTONS */
+
+.button-style:hover,
+#submit-message-file:hover {
     background-color: #3a5a40;
 }
 
-#creation_modification > h1 {
-    color: #3a5a40;
-    font-weight: 700;
-    margin-bottom: 10px;
+/* CONTENEUR DES BOUTONS MESSAGE / FICHIER */
+.message-file-button {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+
+/* ICÔNES DANS LES BOUTONS */
+.message-file-button .fa-regular.fa-comments,
+.message-file-button .fa-regular.fa-file {
+    font-size: 26px;
+    padding-right: 10px;
+}
+
+
+/* --- Section : message-file-content ---*/
+
+/* FORM PRINCIPAL */
+#message-file {
+    display: flex;
+    flex-direction: column;
+}
+  
+  /* Titre "Fichier" */
+.file-upload-label {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+  
+  /* Labels généraux */
+#message-file label {
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+  
+  /* Inputs texte */
+#message-file input[type="text"] {
+    margin-bottom: 20px;
+    border: 1px solid #588157;
+    padding: 12px 0 12px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+#message-file textarea {
+    margin-bottom: 20px;
+    border: 1px solid #588157;
+    padding: 12px 0 12px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 100%;
+    resize: vertical; /* Permet de redimensionner verticalement */
+    min-height: 100px;
+}
+
+  
+  /* Focus sur les champs texte */
+#message-file input[type="text"]:focus {
+    outline: none;
+}
+  
+  /* Style des placeholders */
+#message-file input::placeholder, #message-file textarea::placeholder {
+    color: #bab8b8;
+    opacity: 0.8;
+    font-size: 20px;
+}
+  
+  /* Bloc personnalisé pour l’upload de fichiers */
+.custom-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px dotted #588157;
+    padding: 40px 0;
+}
+.hiddenFile {
+    display: none;
+}
+
+  /* Label contenant l’icône et le texte */
+.custom-file-upload label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  /* Texte sous l’icône */
+.custom-file-upload span {
+    margin-top: 10px;
+    font-size: 20px;
+}
+  
+  /* L’input file est invisible mais cliquable */
+.custom-file-upload input[type="file"] {
+    opacity: 0;
+    position: absolute;
+}
+  
+/* Icône de nuage */
+.custom-file-upload .fa-cloud-arrow-up {
+    font-size: 40px;
+    color: #3A5A40;
+}
+  
+/* Bouton de soumission */
+#submit-message-file{
+    width: 100px;
+    height: 50px;
+    padding: 25px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+  

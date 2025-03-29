@@ -31,9 +31,10 @@
         </button>
       </div>
       <!-- Bouton d'ajout -->
-      <button class="button-add" type="button">
+      <a href="page_creation_modification.php" class="button-add">
         <i class="fa-solid fa-plus"></i>
-      </button>
+      </a>
+
     </div>
   </section>
   <!-- ====== Fin section : contenu-ue ====== -->

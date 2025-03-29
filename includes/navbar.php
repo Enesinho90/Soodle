@@ -12,7 +12,7 @@
 </div>
 <div id="profil-popup">
     <div class="profil-informations">
-        <img class="avatar-onclick" src="avatar.jpg" alt="avatar">
+        <img class="avatar-onclick" src="img/avatar.jpg" alt="avatar">
         <div class="person">
             <p class="username">Nom Prénom</p>
             <p class="usermail">mail@mail.fr</p>
