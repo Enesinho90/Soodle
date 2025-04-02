@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<?php  include 'navbar.php';?>
+<?php include("initialize.php"); ?>
     <div class="title">
         <h1> Mes cours</h1>
     </div>

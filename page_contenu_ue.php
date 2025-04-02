@@ -10,7 +10,7 @@
 
 </head>
 <body id="page-contenu-ue">
-<?php include("navbar.php"); ?>
+<?php include("initialize.php"); ?>
 <main>
   <!-- ====== Section : contenu-ue ====== -->
   <section id="contenu-ue">
@@ -32,9 +32,9 @@
         </button>
       </div>
       <!-- Bouton d'ajout -->
-      <button class="button-add" type="button">
+      <a href="page_creation_modification.php" class="button-add">
         <i class="fa-solid fa-plus"></i>
-      </button>
+      </a>
     </div>
   </section>
   <!-- ====== Fin section : contenu-ue ====== -->
