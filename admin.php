@@ -30,7 +30,7 @@
                 d'enseignement</button>
         </div>
         <div id="add">
-            <button class="add">Ajouter</button>
+            <button onclick = 'window.open("createUser.php", "_blank")' class="add">Ajouter</button>
         </div>
         <table id="users">
             <tr>
@@ -195,6 +195,7 @@
 </body>
 
 <script>
+
     function displayUEs() {
         let buttonUE = document.getElementById("ueButton")
         buttonUE.classList.add("active")
@@ -210,7 +211,9 @@
 
         let buttonAdd = document.getElementById("add")
         buttonAdd.innerHTML = '<button class="add">Créer</button>'
-
+        buttonAdd.onclick = function () {
+            window.open("createUE.php", "_blank");
+        };
     }
 
     function displayUsers() {
@@ -227,8 +230,11 @@
 
         let buttonAdd = document.getElementById("add")
         buttonAdd.innerHTML = '<button class="add">Ajouter</button>'
-
+        buttonAdd.onclick = function () {
+            window.open("createUser.php", "_blank");
+        };
     }
+
 </script>
 
 </html>

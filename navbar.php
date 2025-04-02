@@ -12,8 +12,8 @@
     <div class="navbar">
         <div class="navbar-left">
             <img class=logo-navbar src="assets/soodle-s-nobg.png" alt="logo Soodle">
-            <p class="pages-navbar"> <a class="link-to-page" href="cours.html"> Mes cours </a> </p>
-            <p class="pages-navbar"> <a class="link-to-page" href="admin.html"> Admin </a> </p>
+            <p class="pages-navbar"> <a class="link-to-page" href="cours.php"> Mes cours </a> </p>
+            <p class="pages-navbar"> <a class="link-to-page" href="admin.php"> Admin </a> </p>
         </div>
         <div class="navbar-right">
             <i class="fa-regular fa-bell"></i>
