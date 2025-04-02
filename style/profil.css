@@ -116,6 +116,16 @@ button:active {
         align-items: center;
     }
 }
+.upload-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.hidden-input {
+    display: none;
+}
 
 @media (max-width:500px) {
     .profil-avatar {
