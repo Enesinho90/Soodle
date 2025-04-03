@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<?php include('navbar.php')?>
+<?php include('initialize.php')?>
     <div class="container">
         <a href="cours.php"><button class="return">Retour</button></a>
     </div>
