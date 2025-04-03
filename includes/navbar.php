@@ -22,7 +22,7 @@
     </div>
     <div id="profil-popup">
         <div class="profil-informations">
-            <img class="avatar-onclick" src="../assets/avatar.jpg" alt="avatar">
+            <img class="avatar-onclick" src="/Soodle/assets/avatar.jpg" alt="avatar">
             <div class="person">
                 <p class="username"> Nom Prénom</p>
                 <p class="usermail"> mail@mail.fr</p>
