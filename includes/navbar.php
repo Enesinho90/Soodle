@@ -51,6 +51,7 @@
                 state.style.display = "none";
             }
         });
+
     }
 
     displayProfil();
