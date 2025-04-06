@@ -108,9 +108,11 @@ main section {
 }
 
 .participants {
+    display: inline-block;
     color: #a3b18a;
     font-size: 1.2em;
     margin-top: 0;
+
 }
 
 .publications {
@@ -222,7 +224,19 @@ main section {
 /* =========Fin posts========== */
 /* =========Changements faits========== */
 
-a{
+
+a.link-participants {
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a.link-participants:hover {
+    background-color: rgba(44, 62, 80, 0.1); /* fond discret au survol */
+}
+
+a {
     display: block;
     text-decoration: none;
     color: inherit;

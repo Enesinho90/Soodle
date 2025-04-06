@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if(document.body.id === "page-login") {
 
+
         const inputMotDePasse = document.getElementById("motdepasse-input")
         const closeEye = document.querySelector(".fa-eye-slash")
         const openEye = document.querySelector(".fa-eye")
