@@ -57,10 +57,16 @@ img {
     height: 65px;
     width: 65px;
     border-radius: 100%;
-    border: #FFFFFF 1px solid;
+    border: #DAD7CD 2px solid;
     cursor: pointer;
 }
-
+.avatar:hover{
+    border: #A3B18A 3px solid;
+    transition: 0.1s;
+}
+.avatar:active{
+    border: #FFFFFF 3px solid;
+}
 
 
 .link-to-page {
