@@ -16,14 +16,14 @@
 </head>
 
 <body>
-<?php  include 'navbar.php';?>
+<?php include("initialize.php"); ?>
     <div class="title">
         <h1> Mes cours</h1>
     </div>
     <div class="container-courses">
         <div class="course"><a href="page_contenu_ue.php">
 
-                <img class=course-pic src="/assets/background-cours1.jpg" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours1.jpg" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours2.gif" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours2.gif" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -41,7 +41,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours3.gif" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours3.gif" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -50,7 +50,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours4.png" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours4.png" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -59,7 +59,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours1.jpg" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours1.jpg" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -68,7 +68,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours2.gif" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours2.gif" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -77,7 +77,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours3.gif" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours3.gif" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB
@@ -86,7 +86,7 @@
             </a>
         </div>
         <div class="course"><a href="page_contenu_ue.php">
-                <img class=course-pic src="/assets/background-cours4.png" alt="Image du cours">
+                <img class=course-pic src="assets/background-cours4.png" alt="Image du cours">
                 <div class="course-description">
                     <p>
                         WE4A Technologies et programmation WEB

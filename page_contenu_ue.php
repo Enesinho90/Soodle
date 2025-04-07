@@ -10,7 +10,7 @@
 
 </head>
 <body id="page-contenu-ue">
-<?php include("navbar.php"); ?>
+<?php include("initialize.php"); ?>
 <main>
   <!-- ====== Section : contenu-ue ====== -->
   <section id="contenu-ue">
@@ -19,8 +19,11 @@
     <!-- Titre principal -->
     <h1>WE4A - Développement Web</h1>
     <!-- Sous-titre participants -->
-    <p class="participants"><a href="participants.php">Participants</a></p>
-    <!-- Titre des publications -->
+      <p class="participants">
+          <a class="link-participants" href="participants.php">Participants</a>
+      </p>
+
+      <!-- Titre des publications -->
     <h2 class="publications">Publications</h2>
     <!-- Zone de recherche + bouton d'ajout -->
     <div class="barre-recherche-ajouter">
@@ -32,9 +35,9 @@
         </button>
       </div>
       <!-- Bouton d'ajout -->
-      <button class="button-add" type="button">
+      <a href="page_creation_modification.php" class="button-add">
         <i class="fa-solid fa-plus"></i>
-      </button>
+      </a>
     </div>
   </section>
   <!-- ====== Fin section : contenu-ue ====== -->

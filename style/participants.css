@@ -21,7 +21,8 @@ img {
 }
 
 button {
-    padding: 10px 15px;
+    padding: 15px;
+    font-size: 16px;
     border-radius: 8px;
     border: solid 1px #588157;
     background-color: #588157;
@@ -69,7 +70,7 @@ button:hover {
     font-size: 22px;
     width: 300px;
     margin-left: 15px;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
     border: solid 1px #588157;
 }

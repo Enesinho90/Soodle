@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<?php include('navbar.php')?>
+<?php include('initialize.php')?>
     <div class="container">
         <a href="cours.php"><button class="return">Retour</button></a>
     </div>
@@ -31,7 +31,8 @@
             <input type="text">
         </label>
         <label for="role"> Role :
-            <select id="cars" name="cars">
+            <select id="role" name="role">
+            <option value="all">Tout</option>
                 <option value="admin">Administrateur</option>
                 <option value="student">Etudiant</option>
                 <option value="teacher">Professeur</option>
