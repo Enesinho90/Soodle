@@ -1,0 +1,243 @@
+main {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main section {
+    width: 80%;
+}
+
+/* ========== Structure principale de la section : #contenu-ue ========== */
+#contenu-ue {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== Boutons principaux ========== */
+.button-style,
+.button-add {
+    background-color: #588157;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Bouton de retour */
+.button-style {
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bouton d'ajout */
+.button-add {
+    font-size: 30px;
+    padding: 10px 15px;
+    flex-shrink: 0;
+}
+
+/* Hover commun aux boutons */
+.button-style:hover,
+.button-add:hover,
+.button-ajouter:hover,
+.recherche-btn:hover {
+    background-color: #3a5a40;
+}
+
+/* ========== Barre de recherche + ajout ========== */
+.barre-recherche-ajouter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Conteneur de la barre de recherche */
+.barre-recherche-container {
+    display: flex;
+    max-width: 350px;
+    border: 1px solid #588157;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Input de recherche */
+.barre-recherche {
+    flex: 1;
+    box-sizing: border-box;
+    border: none;
+    padding: 15px 60px 15px 20px;
+    font-size: 16px;
+}
+
+.barre-recherche::placeholder {
+    color: #bab8b8;
+    opacity: 0.8;
+}
+
+/* Bouton de recherche */
+.recherche-btn {
+    color: white;
+    width: 50px;
+    background-color: #588157;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+/* Icône de recherche */
+.recherche-btn > .fa-solid.fa-magnifying-glass {
+    font-size: 16px;
+}
+
+/* ========== Textes / Titres ========== */
+#contenu-ue > h1 {
+    color: #3a5a40;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.participants {
+    display: inline-block;
+    color: #a3b18a;
+    font-size: 1.2em;
+    margin-top: 0;
+
+}
+
+.publications {
+    color: #3a5a40;
+    font-size: 2em;
+}
+/* =========Fin contenu-ue ========== */
+
+
+/* ========== Structure principale de la section : #posts========== */
+/* Conteneur principal des posts */
+#posts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+/* Ligne de séparation entre les posts */
+#posts hr {
+    margin-top: 15px;
+    margin-bottom: 40px;
+    opacity: 0.5;
+}
+
+/* Icône de message */
+.fa-regular.fa-message {
+    font-size: 28px;
+}
+
+/* Titre + logo + croix */
+.titre-logo-supp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.titre-logo {
+    display: flex;
+    gap: 10px;
+}
+.titre-logo-supp .fa-solid.fa-xmark {
+
+    transition: all 0.3s ease-in-out;
+    opacity: 0.5;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.titre-logo-supp .fa-solid.fa-xmark:hover {
+    color: red;
+}
+
+.titre-logo-supp h3 {
+    margin: 0;
+}
+
+/* Texte du post */
+.post p {
+    color: #bab8b8;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+/* Contenu principal du message */
+.contenu-message {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #A3B18A;
+    margin-left: 40px;
+}
+
+/* Conteneur des boutons */
+.ajouter-modifier {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-left: 40px;
+}
+
+
+.button-ajouter,
+.button-modifier {
+    cursor: pointer;
+    width: 150px;
+    height: 45px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-ajouter {
+    background-color: #588157;
+}
+
+.button-modifier {
+    background-color: #A3B18A;
+}
+
+.button-modifier:hover {
+    background-color: #DAD7CD;
+}
+
+/* =========Fin posts========== */
+/* =========Changements faits========== */
+
+
+a.link-participants {
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a.link-participants:hover {
+    background-color: rgba(44, 62, 80, 0.1); /* fond discret au survol */
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}

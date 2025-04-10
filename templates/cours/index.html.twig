@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Mes cours{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/cours.css') }}">
+{% endblock %}
+{% block body %}
+    {% include 'navbar/index.html.twig' %}
+
+    <div class="title">
+        <h1> Mes cours</h1>
+    </div>
+    <div class="container-courses">
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+
+                <img class=course-pic src="{{ asset('images/background-cours1.jpg') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours2.gif') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours3.gif') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours4.png') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours1.jpg') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours2.gif') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours3.gif') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="course"><a href="{{ path('app_page_contenue_ue') }}">
+                <img class=course-pic src="{{ asset('images/background-cours4.png') }}" alt="Image du cours">
+                <div class="course-description">
+                    <p>
+                        WE4A Technologies et programmation WEB
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="title">
+        <h1> Actualités</h1>
+    </div>
+    <div class="actuality-container">
+        <div class="actualities">
+            <p><span class="professor">• M. LITZLER</span> a posté un nouveau fichier, « Sujet Projet », dans WE4A le
+                8/08/12 </p>
+            <p><span class="professor">• M. LOMBARD</span> a posté un message « Changement salle » dans WE4A le 7/08/12
+            </p>
+            <p><span class="professor">• M. LITZLER</span> a posté un message « Sources TP1 » dans LP2A le 6/08/12 </p>
+            <p><span class="professor">• M. LITZLER</span> a posté un nouveau fichier, « Sujet Projet », dans WE4A le
+                5/08/12 </p>
+            <p><span class="professor">• M. LOMBARD</span> a posté un message « Changement salle » dans WE4A le 4/08/12
+            </p>
+
+        </div>
+        <button> Voir plus ...</button>
+    </div>
+{% endblock %}

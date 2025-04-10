@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Participants{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/participants.css') }}">
+{% endblock %}
+{% block body %}
+    {{ include('navbar/index.html.twig') }}
+    <div class="container">
+        <a href="{{ path('app_cours') }}"><button class="return">Retour</button></a>
+    </div>
+    <div class="title">
+        <h1> WE4A - Développement Web</h1>
+    </div>
+    <p class="title2">Participants</p>
+    <div class="container-participants">
+
+    </div>
+    <div class="filters">
+        <label for="name"> Nom :
+            <input type="text">
+        </label>
+        <label for="role"> Role :
+            <select id="role" name="role">
+                <option value="all">Tout</option>
+                <option value="admin">Administrateur</option>
+                <option value="student">Etudiant</option>
+                <option value="teacher">Professeur</option>
+            </select>
+        </label>
+        <button> Filtrer</button>
+    </div>
+    <table id="users">
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Jean-Luc DUPONT</td>
+            <td>Administrateur</td>
+            <td>mail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>John Snow</td>
+            <td>Etudiant</td>
+            <td>mailmail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Walter White</td>
+            <td>Professeur, Administrateur</td>
+            <td>mailmailmail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Arya Stark</td>
+            <td>Etudiant</td>
+            <td>mailmailmail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Jean-Luc DUPONT</td>
+            <td>Adminstrateur</td>
+            <td>mail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>John Snow</td>
+            <td>Etudiant</td>
+            <td>mailmail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Walter White</td>
+            <td>Professeur, Administrateur</td>
+            <td>mailmailmail@mail.fr</td>
+
+        </tr>
+        <tr>
+            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+            <td>Arya Stark</td>
+            <td>Etudiant</td>
+            <td>mailmailmail@mail.fr</td>
+
+        </tr>
+    </table>
+{% endblock %}
