@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Admin {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/admin.css') }}">
+{% endblock %}
+{% block body %}
+    {% include 'partials/navbar.html.twig' %}
+    <div class="title">
+        <h1> Administration</h1>
+    </div>
+    <div class="container">
+        <div class="informations">
+            <p>Il y a actuellement <span class="green">1609</span> étudiants et <span class="green">72</span> unités
+                d'enseignement</p>
+        </div>
+        <div class="buttons">
+            <button class="active" id="userButton" onclick="displayUsers()">Utilisateurs</button><button
+                    onclick="displayUEs()" id="ueButton">Unités
+                d'enseignement</button>
+        </div>
+        <div id="add">
+            <button onclick='window.open("{{ url('app_createUser') }}", "_blank")' class="add">Ajouter</button>
+        </div>
+        <table id="users">
+            <tr>
+                <td><img class=image-table src="{{  asset('images/avatar.jpg')  }}"></td>
+                <td>Jean-Luc DUPONT</td>
+                <td>Administrateur</td>
+                <td>mail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>John Snow</td>
+                <td>Etudiant</td>
+                <td>mailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>Walter White</td>
+                <td>Professeur, Administrateur</td>
+                <td>mailmailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>Arya Stark</td>
+                <td>Etudiant</td>
+                <td>mailmailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>Jean-Luc DUPONT</td>
+                <td>Adminstrateur</td>
+                <td>mail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>John Snow</td>
+                <td>Etudiant</td>
+                <td>mailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>Walter White</td>
+                <td>Professeur, Administrateur</td>
+                <td>mailmailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
+                <td>Arya Stark</td>
+                <td>Etudiant</td>
+                <td>mailmailmail@mail.fr</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+        </table>
+
+        <table class="hide" id="ues">
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>WE4A</td>
+                <td>Technologies et programmation WEB</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>SY43</td>
+                <td>Android development</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>RS40</td>
+                <td>Réseaux et Cybersécurité niveau 1</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>SI40</td>
+                <td>Systèmes d'information</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>WE4A</td>
+                <td>Technologies et programmation WEB</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>SY43</td>
+                <td>Android development</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td>RS40</td>
+                <td>Réseaux et Cybersécurité niveau 1</td>
+                <td class="interact-buttons">
+                    <i class="fa-solid fa-pencil"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var createUEUrl = "{{ path('app_createUE') }}";
+        var createUserUrl = "{{ path('app_createUser') }}";
+    </script>
+    {{ parent() }}
+{% endblock %}

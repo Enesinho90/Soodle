@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Créer une UE{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+{% endblock %}
+{% block body %}
+    <form>
+        <div class="title">
+            <h1> Formulaire de création d'UE</h1>
+        </div>
+        <div class="form-input">
+            <div><label for="code"> Code :</label></div>
+            <input type="text" id="code">
+
+        </div>
+
+        <br>
+        <div class="form-input" >
+            <div> <label for="intitule"> Intitulé : </label> </div>
+            <input type="text" id="intitule">
+            </label>
+        </div>
+
+        <br>
+        <div class="form-input" >
+            <div>
+                <label for="image">Image</label>
+            </div>
+            <div>
+                <input class="file" type="file" id="image">
+                <label for="image"><p class="televerse" id="upload-text"> <i class="fa-solid fa-upload"></i> Televerser votre image</p></label>
+            </div>
+
+        </div>
+
+        <br>
+        <button type="submit">Créer une UE</button>
+    </form>
+{% endblock %}

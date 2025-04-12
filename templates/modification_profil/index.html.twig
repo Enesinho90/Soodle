@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Modifier son profil{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+{% endblock %}
+{% block body %}
+    <form>
+        <div class="title">
+            <h1> Formulaire de modification profil</h1>
+        </div>
+
+        <div class="form-input">
+            <div><label for="nom"> Nom :</label></div>
+            <input type="text" id="nom">
+
+        </div>
+        <br>
+
+        <div class="form-input" >
+            <div> <label for="prenom"> Prénom : </label> </div>
+            <input type="text" id="prenom">
+            </label>
+        </div>
+        <br>
+
+        <div class="form-input" >
+            <div> <label for="mail"> Mail : </label> </div>
+            <input type="email" id="mail">
+            </label>
+        </div>
+        <br>
+
+
+
+        <br>
+        <button type="submit">Valider</button>
+    </form>
+{% endblock %}

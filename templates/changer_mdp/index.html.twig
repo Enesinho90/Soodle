@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Changer de mot de passe{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/changer_mdp.css') }}">
+{% endblock %}
+{% block body %}
+    <form>
+        <div class="title">
+            <h1> Formulaire de changement de mot de passe</h1>
+        </div>
+        <div class="form-input">
+            <div><label for="old-password"> Mot de passe actuel :</label></div>
+            <input type="password" id="old-password">
+
+        </div>
+
+        <br>
+        <div class="form-input" >
+            <div> <label for="new-password"> Nouveau mot de passe :</label> </div>
+            <input type="password" id="new-password">
+            </label>
+        </div>
+
+        <br>
+        <div class="form-input" >
+            <div><label for="new-password-repeat"> Confirmer le mot de passe : </label></div>
+            <input type="password" id="new-password-repeat">
+
+        </div>
+
+        <br>
+        <button type="submit">Changer le mot de passe</button>
+    </form>
+{% endblock %}

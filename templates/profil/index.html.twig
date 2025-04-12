@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Mon profil{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/profil.css') }}">
+{% endblock %}
+{% block body %}
+    {% include 'partials/navbar.html.twig' %}
+    <div class="title">
+        <h1> Mon Profil</h1>
+    </div>
+    <div class="container-profil">
+        <div class="left-profil">
+
+            <img src="{{ asset('images/avatar.jpg') }}" class="profil-avatar">
+
+            <label for="fileInput" class="upload-container">
+                <i class="fa-solid fa-upload"></i>
+            </label>
+            <label for="fileInput" class="upload-container">
+                <p>Changer d'avatar</p>
+            </label>
+            <input type="file" id="fileInput" class="hidden-input">
+        </div>
+        <div class="right-profil">
+            <p>Nom : <span class="green"> DUPONT</span></p>
+            <p>Prénom : <span class="green"> Jean-Luc</span></p>
+            <p>Adresse mail : <span class="green"> mail@mail.fr</span></p>
+            <p>Rôle : <span class="green"> Administrateur</span></p>
+            <div>
+            </div>
+            <div class="buttons">
+                <a href="{{ path('app_modification_profil') }}" target="_blank"><button><i class="fa-solid fa-gear"></i> Modifier mon profil</button></a>
+                <a href="{{ path('app_changer_mdp') }}" target="_blank"><button><i class="fa-solid fa-key"></i> Changer de mot de passe</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
