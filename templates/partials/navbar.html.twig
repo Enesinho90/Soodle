@@ -10,7 +10,9 @@
         <div class="navbar-left">
             <img class=logo-navbar src=" {{ asset('images/soodle-s-nobg.png')}}" alt="logo Soodle">
             <p class="pages-navbar"> <a class="link-to-page" href="{{ path('app_cours') }}"> Mes cours </a> </p>
-            <p class="pages-navbar"> <a class="link-to-page" href="{{ path('app_admin') }}"> Admin </a> </p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <p class="pages-navbar"> <a class="link-to-page" href="{{ path('app_admin') }}"> Admin </a> </p>
+            {% endif %}
         </div>
         <div class="navbar-right">
             <i class="fa-regular fa-bell"></i>
@@ -21,16 +23,16 @@
         <div class="profil-informations">
             <img class="avatar-onclick" src="{{ asset('images/avatar.jpg')}}" alt="avatar">
             <div class="person">
-                <p class="username"> Nom Prénom</p>
-                <p class="usermail"> mail@mail.fr</p>
-                <p class="userrole"> Administrateur</p>
+                <p class="username"> {{app.user.prenom}}</p>
+                <p class="usermail"> {{app.user.nom}}</p>
+                <p class="userrole"> {{app.user.roles[0]}}</p>
             </div>
 
         </div>
         <hr>
         <p class="acces-profil"> <a href="{{ path('app_profil') }}"><i class="fa-regular fa-user"></i>Accéder a mon profil</a></p>
         <hr>
-        <p class="disconnect"><i class="fa-solid fa-arrow-right-to-bracket"></i>Deconnexion</p>
+        <p class="acces-profil"><a href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-to-bracket"></i>Deconnexion</a></p>
     </div>
 
 
