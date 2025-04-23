@@ -90,19 +90,6 @@ class AppFixtures extends Fixture
         $affectationEtudiant->setDateInscription(new \DateTime());
         $manager->persist($affectationEtudiant);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         $manager->flush();
     }
 }

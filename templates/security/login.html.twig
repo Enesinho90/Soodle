@@ -1,37 +1,79 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Soodle | Login{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/login.css') }}">
+
+{% endblock %}
+
+{% block id %}page-login{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <img class="Soodle-logo" src="{{ asset('images/page-login/logo.png') }}" alt="logo">
+    <main>
+        <section class="login">
+            <form method="post" id="login-form">
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <p class="slogan">Ta plateforme, ton savoir, ton avenir.</p>
+                <h1>Connecte-toi à Soodle</h1>
+
+                <!-- <== Champ identifiant > -->
+                <label for="login-input">Email</label>
+                <div class="login-input-container">
+                    <input type="email" value="{{ last_username }}" name="email" id="login-input"  autocomplete="email" required autofocus placeholder="eem.eup@soodle.fr">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <!-- <== fin de Champ identifiant > -->
+
+
+
+                <!-- <== Champ mot de passe > -->
+                <label for="motdepasse-input">Password</label>
+                <div class="motdepasse-input-container">
+                    <input type="password" name="password" id="motdepasse-input" autocomplete="current-password" required placeholder="Mot de Passe">
+                    <i class="fa-regular fa-eye"></i>
+                    <i class="fa-eye-slash hiddeneye"></i>
+                </div>
+                <!-- <== fin de Champ mot de passe > -->
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+
+
+                <button class="button-style" type="submit">
+                    Connexion
+                </button>
+            </form>
+        </section>
+
+        <!-- <== section :  background > -->
+        <div class="background">
+            <img src="{{ asset('images/page-login/background.png') }}">
         </div>
-    {% endif %}
+        <!-- <== fin de section Fond d'écran > -->
+    </main>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
-    </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
 {% endblock %}

@@ -11,6 +11,8 @@
 body, html {
     margin: 0;
     padding: 0;
+    overflow: hidden;            /* empêche le scroll */
+    zoom: 80%;                   /* applique le zoom */
 }
 /* <== fin de section > */
 
