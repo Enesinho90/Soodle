@@ -8,12 +8,21 @@
 
     <div class="navbar">
         <div class="navbar-left">
-            <img class=logo-navbar src=" {{ asset('images/soodle-s-nobg.png')}}" alt="logo Soodle">
+            <a href="{{ path('app_cours') }}">
+                <img class="logo-navbar" src="{{ asset('images/soodle-s-nobg.png') }}" alt="logo Soodle">
+            </a>
             <p class="pages-navbar"> <a class="link-to-page" href="{{ path('app_cours') }}"> Mes cours </a> </p>
             <p class="pages-navbar"> <a class="link-to-page" href="{{ path('app_admin') }}"> Admin </a> </p>
         </div>
         <div class="navbar-right">
-            <i class="fa-regular fa-bell"></i>
+            <div class="notification-container">
+                <i class="fa-regular fa-bell" id="notif-icon"></i>
+                <div class="notification-popup" id="notif-popup" style="display: none;">
+                    <p><strong>Mathieu</strong> vous a envoyé un message</p>
+                    <p><strong>Lucie</strong> a ajouté une date limite pour le rendu de WE4A</p>
+                    <p><strong>Admin</strong> a mis à jour les règles</p>
+                </div>
+            </div>
             <img id="profil-picture" class="avatar" src="{{ asset('images/avatar.jpg')}}" alt="avatar">
         </div>
     </div>
@@ -35,3 +44,20 @@
 
 
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const icon = document.getElementById('notif-icon');
+            const popup = document.getElementById('notif-popup');
+
+            icon.addEventListener('click', () => {
+                popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+    {{ parent() }}
+{% endblock %}
+
+
+
