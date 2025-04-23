@@ -76,6 +76,16 @@ class AppFixtures extends Fixture
         $post->setUniteEnseignement($uniteEnseignement_1);
         $manager->persist($post);
 
+        //creation de post
+        $post_2 = new Post();
+        $post_2->setTitre("Pas bienvenue");
+        $post_2->setContenu("Ce cours va couvrir JAVASCRIPT.");
+        $post_2->setDate(new \DateTime());
+        $post_2->setType(false); // false = texte
+        $post_2->setUtilisateur($userProf);
+        $post_2->setUniteEnseignement($uniteEnseignement_1);
+        $manager->persist($post_2);
+
         //creation affectation
         $affectationProf = new Affectation();
         $affectationProf->setUtilisateur($userProf);

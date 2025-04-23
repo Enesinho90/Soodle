@@ -85,17 +85,6 @@ class UniteEnseignement
         return $this;
     }
 
-    public function getPost(): ?Post
-    {
-        return $this->post;
-    }
-
-    public function setPost(?Post $post): static
-    {
-        $this->post = $post;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Affectation>
@@ -109,7 +98,7 @@ class UniteEnseignement
     {
         if (!$this->affectations->contains($affectation)) {
             $this->affectations->add($affectation);
-            $affectation->setUniteEnseignements($this);
+            $affectation->setUniteEnseignement($this);
         }
 
         return $this;
@@ -119,8 +108,8 @@ class UniteEnseignement
     {
         if ($this->affectations->removeElement($affectation)) {
             // set the owning side to null (unless already changed)
-            if ($affectation->getUniteEnseignements() === $this) {
-                $affectation->setUniteEnseignements(null);
+            if ($affectation->getUniteEnseignement() === $this) {
+                $affectation->setUniteEnseignement(null);
             }
         }
 

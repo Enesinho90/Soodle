@@ -31,10 +31,14 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
+
                 <!-- Bouton d'ajout -->
-                <a href="{{ path('app_page_creation_modification') }}" class="button-add">
-                    <i class="fa-solid fa-plus"></i>
-                </a>
+                {% if is_granted('ROLE_PROF') %}
+                    <a href="{{ path('app_page_creation_modification') }}" class="button-add">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                {% endif %}
+
             </div>
         </section>
         <!-- ====== Fin section : contenu-ue ====== -->
@@ -42,7 +46,30 @@
 
 
         <!-- ====== Section : Posts ====== -->
+
         <section id="posts">
+
+            {% for post in posts %}
+                <div class="post">
+                    <div class="titre-logo-supp">
+                        <div class="titre-logo">
+                            <i class="fa-regular fa-message"></i>
+                            <h3>post.titre</h3>
+                        </div>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+                    <p>Posté par {{ post.utilista }} il y a 2j</p>
+                    <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
+                    <div class="ajouter-modifier">
+                        <button class="button-ajouter" type="button">Ajouter</button>
+                        <button class="button-modifier" type="button">Modifier</button>
+                    </div>
+                    <hr>
+                </div>
+
+            {% endfor %}
+
             <!-- Un post -->
             <div class="post">
                 <div class="titre-logo-supp">

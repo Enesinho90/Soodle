@@ -106,65 +106,6 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Collection<int, UniteEnseignement>
-     */
-    public function getUniteEnseignement(): Collection
-    {
-        return $this->uniteEnseignement;
-    }
-
-    public function addUniteEnseignement(UniteEnseignement $uniteEnseignement): static
-    {
-        if (!$this->uniteEnseignement->contains($uniteEnseignement)) {
-            $this->uniteEnseignement->add($uniteEnseignement);
-            $uniteEnseignement->setPost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUniteEnseignement(UniteEnseignement $uniteEnseignement): static
-    {
-        if ($this->uniteEnseignement->removeElement($uniteEnseignement)) {
-            // set the owning side to null (unless already changed)
-            if ($uniteEnseignement->getPost() === $this) {
-                $uniteEnseignement->setPost(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Utilisateur>
-     */
-    public function getUtilisateurs(): Collection
-    {
-        return $this->utilisateurs;
-    }
-
-    public function addUtilisateur(Utilisateur $utilisateur): static
-    {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setPost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUtilisateur(Utilisateur $utilisateur): static
-    {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
-            // set the owning side to null (unless already changed)
-            if ($utilisateur->getPost() === $this) {
-                $utilisateur->setPost(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getUtilisateur(): ?Utilisateur
     {
@@ -176,6 +117,11 @@ class Post
         $this->utilisateur = $utilisateur;
 
         return $this;
+    }
+
+    public function getUniteEnseignement(): ?UniteEnseignement
+    {
+        return $this->uniteEnseignement;
     }
 
     public function setUniteEnseignement(?UniteEnseignement $uniteEnseignement): static

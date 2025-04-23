@@ -64,8 +64,14 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         $this->posts = new ArrayCollection();
     }
 
-
-
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+    public function setPlainPassword(string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -177,26 +183,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPost(): ?Post
-    {
-        return $this->post;
-    }
-
-    public function setPost(?Post $post): static
-    {
-        $this->post = $post;
-
-        return $this;
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-    public function setPlainPassword(string $plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
 
     /**
      * @return Collection<int, Affectation>
@@ -210,7 +196,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->affectations->contains($affectation)) {
             $this->affectations->add($affectation);
-            $affectation->setUtilisateurs($this);
+            $affectation->setUtilisateur($this);
         }
 
         return $this;
@@ -220,8 +206,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->affectations->removeElement($affectation)) {
             // set the owning side to null (unless already changed)
-            if ($affectation->getUtilisateurs() === $this) {
-                $affectation->setUtilisateurs(null);
+            if ($affectation->getUtilisateur() === $this) {
+                $affectation->setUtilisateur(null);
             }
         }
 
