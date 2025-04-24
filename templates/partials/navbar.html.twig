@@ -23,9 +23,11 @@
         <div class="profil-informations">
             <img class="avatar-onclick" src="{{ asset('images/avatar.jpg')}}" alt="avatar">
             <div class="person">
-                <p class="username"> {{app.user.prenom}}</p>
-                <p class="usermail"> {{app.user.nom}}</p>
-                <p class="userrole"> {{app.user.roles[0]}}</p>
+                <p class="username"> {{app.user.nom | upper}}{{app.user.prenom}} </p>
+                <p class="usermail"> {{app.user.email}}</p>
+                <p class="userrole"> {% for role in app.user.roles %}
+                        {{role}}
+                    {% endfor %}</p>
             </div>
 
         </div>

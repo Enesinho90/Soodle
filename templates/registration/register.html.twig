@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Créer un utilisateur{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+    <div class="title">
+        <h1>Formulaire de création d'utilisateur</h1>
+    </div>
+
+    <div class="form-input">
+        <div>{{ form_label(registrationForm.nom, 'Nom :') }}</div>
+        {{ form_widget(registrationForm.nom, {'attr': {'id': 'nom'}}) }}
+        {{ form_errors(registrationForm.nom) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(registrationForm.prenom, 'Prénom :') }}</div>
+        {{ form_widget(registrationForm.prenom, {'attr': {'id': 'prenom'}}) }}
+        {{ form_errors(registrationForm.prenom) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(registrationForm.email, 'Mail :') }}</div>
+        {{ form_widget(registrationForm.email, {'attr': {'id': 'mail'}}) }}
+        {{ form_errors(registrationForm.email) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(registrationForm.roleChoice, 'Rôle :') }}</div>
+        {{ form_widget(registrationForm.roleChoice, {'attr': {'id': 'role'}}) }}
+        {{ form_errors(registrationForm.roleChoice) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(registrationForm.plainPassword, 'Mot de passe :') }}</div>
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'id': 'mdp'}}) }}
+        {{ form_errors(registrationForm.plainPassword) }}
+    </div>
+    <br>
+
+    <br>
+
+    <button type="submit" class="btn">Créer un utilisateur</button>
+
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
