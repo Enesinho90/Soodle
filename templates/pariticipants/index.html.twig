@@ -2,90 +2,55 @@
 
 {% block title %}Soodle | Participants{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/participants.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/participants.css') }}?v=12">
 {% endblock %}
 {% block body %}
     {% include 'partials/navbar.html.twig' %}
     <div class="container">
-        <a href="{{ path('app_cours') }}"><button class="return">Retour</button></a>
+        <a href="{{ path('app_page_contenue_ue', {'id': ue.id}) }}"><button class="return">Retour</button></a>
     </div>
     <div class="title">
-        <h1> WE4A - Développement Web</h1>
+        <h1> Liste des participants {{ ue.code}} - {{ ue.intitule }}</h1>
     </div>
-    <p class="title2">Participants</p>
     <div class="container-participants">
 
     </div>
-    <div class="filters">
-        <label for="name"> Nom :
-            <input type="text">
-        </label>
-        <label for="role"> Role :
-            <select id="role" name="role">
-                <option value="all">Tout</option>
-                <option value="admin">Administrateur</option>
-                <option value="student">Etudiant</option>
-                <option value="teacher">Professeur</option>
-            </select>
-        </label>
-        <button> Filtrer</button>
-    </div>
+
+    <!-- Tableau des Professeurs (et Administrateurs) -->
+    <p class="title2">Professeurs (et Administrateurs)</p>
     <table id="users">
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Jean-Luc DUPONT</td>
-            <td>Administrateur</td>
-            <td>mail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>John Snow</td>
-            <td>Etudiant</td>
-            <td>mailmail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Walter White</td>
-            <td>Professeur, Administrateur</td>
-            <td>mailmailmail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Arya Stark</td>
-            <td>Etudiant</td>
-            <td>mailmailmail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Jean-Luc DUPONT</td>
-            <td>Adminstrateur</td>
-            <td>mail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>John Snow</td>
-            <td>Etudiant</td>
-            <td>mailmail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Walter White</td>
-            <td>Professeur, Administrateur</td>
-            <td>mailmailmail@mail.fr</td>
-
-        </tr>
-        <tr>
-            <td><img class=image-table src="{{ asset('images/avatar.jpg') }}"></td>
-            <td>Arya Stark</td>
-            <td>Etudiant</td>
-            <td>mailmailmail@mail.fr</td>
-
-        </tr>
+        {% for user in users %}
+            {% if 'ROLE_PROF' in user.roles %}
+                <tr>
+                    <td><img class="image-table" src="{{ asset('uploads/avatar/' ~ user.avatar) }}"></td>
+                    <td>{{ user.nom | upper }} {{ user.prenom }}</td>
+                    <td>{% for role in user.roles %}
+                            {% if role == 'ROLE_ADMIN' %} Administrateur
+                            {% elseif role == 'ROLE_PROF' %} Professeur
+                            {% endif %}
+                        {% endfor %}</td>
+                    <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
     </table>
+
+    <!-- Tableau des Etudiants -->
+    <p class="title2">Etudiants</p>
+    <table id="users">
+        {% for user in users %}
+            {% if 'ROLE_ETUDIANT' in user.roles %}
+                <tr>
+                    <td><img class="image-table" src="{{ asset('uploads/avatar/' ~ user.avatar) }}"></td>
+                    <td>{{ user.nom | upper }} {{ user.prenom }}</td>
+                    <td>{% for role in user.roles %}
+                            {% if role == 'ROLE_ETUDIANT' %} Etudiant {% endif %}
+
+                        {% endfor %}</td>
+                    <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
 {% endblock %}

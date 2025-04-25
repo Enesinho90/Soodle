@@ -17,7 +17,7 @@
             <h1>{{ uniteEnseignement.code }} - {{uniteEnseignement.getIntitule()}} </h1>
             <!-- Sous-titre participants -->
             <p class="participants">
-                <a class="link-participants" href="{{ path('app_pariticipants') }}">Participants</a>
+                <a class="link-participants" href="{{ path('app_pariticipants', {'id': uniteEnseignement.id}) }}">Participants</a>
             </p>
 
             <!-- Titre des publications -->

@@ -15,6 +15,15 @@ class AffectationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Affectation::class);
     }
+    public function findByUEId(int $id)
+    {
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.uniteEnseignement', 'ue') // On fait la jointure avec l'entité UniteEnseignement
+            ->andWhere('ue.id = :id') // On filtre par l'ID de l'unité d'enseignement
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    }
 
     //    /**
     //     * @return Affectation[] Returns an array of Affectation objects
