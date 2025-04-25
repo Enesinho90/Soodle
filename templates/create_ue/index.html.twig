@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Créer une UE{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/createUE.css?v=123') }}">
 {% endblock %}
 {% block body %}
     {{ form_start(UEForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
