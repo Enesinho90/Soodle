@@ -11,16 +11,31 @@
     </div>
     <div class="container-profil">
         <div class="left-profil">
-
-            <img src="{{ asset('images/avatar.jpg') }}" class="profil-avatar">
+            {% if user.avatar %}
+                <img src="{{ asset('uploads/avatar/' ~ user.avatar) }}" class="profil-avatar">
+                {% else %}
+                    <img src="{{ asset('uploads/avatar/default.jpg') }}" class="profil-avatar">
+            {% endif %}
             <br>
-
         </div>
         <div class="right-profil">
-            <p>Nom : <span class="green"> DUPONT</span></p>
-            <p>Prénom : <span class="green"> Jean-Luc</span></p>
-            <p>Adresse mail : <span class="green"> mail@mail.fr</span></p>
-            <p>Rôle : <span class="green"> Administrateur</span></p>
+            <p>Nom : <span class="green"> {{ user.nom }}</span></p>
+            <p>Prénom : <span class="green"> {{ user.prenom }}</span></p>
+            <p>Adresse mail : <span class="green"> {{ user.email }}</span></p>
+            <p>Rôle :
+                <span class="green">
+        {% for role in app.user.roles %}
+            {% if role == 'ROLE_ADMIN' %}
+                Administrateur
+            {% elseif role == 'ROLE_PROF' %}
+                Professeur
+            {% elseif role == 'ROLE_ETUDIANT' %}
+                Étudiant
+            {% endif %}
+        {% endfor %}
+    </span>
+            </p>
+
             <div>
             </div>
             <div class="buttons">

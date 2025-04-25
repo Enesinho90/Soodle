@@ -2,34 +2,45 @@
 
 {% block title %}Soodle | Changer de mot de passe{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/changer_mdp.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/changer_mdp.css?v=123') }}">
 {% endblock %}
 {% block body %}
-    <form>
-        <div class="title">
-            <h1> Formulaire de changement de mot de passe</h1>
-        </div>
-        <div class="form-input">
-            <div><label for="old-password"> Mot de passe actuel :</label></div>
-            <input type="password" id="old-password">
+    {{ form_start(passwordForm) }}
 
-        </div>
+    <div class="title">
+        <h1>Formulaire de changement de mot de passe</h1>
+    </div>
 
-        <br>
-        <div class="form-input" >
-            <div> <label for="new-password"> Nouveau mot de passe :</label> </div>
-            <input type="password" id="new-password">
-            </label>
-        </div>
+    <div class="form-input">
+        <label for="{{ passwordForm.currentPassword.vars.id }}">Mot de passe actuel :</label>
+        {{ form_widget(passwordForm.currentPassword, {'attr': {'id': passwordForm.currentPassword.vars.id}}) }}
+        {{ form_errors(passwordForm.currentPassword) }}
+    </div>
 
-        <br>
-        <div class="form-input" >
-            <div><label for="new-password-repeat"> Confirmer le mot de passe : </label></div>
-            <input type="password" id="new-password-repeat">
 
-        </div>
+    <br>
 
-        <br>
-        <button type="submit">Changer le mot de passe</button>
-    </form>
+    <div class="form-input">
+        <label for="{{ passwordForm.newPassword.first.vars.id }}">Nouveau mot de passe :</label>
+        {{ form_widget(passwordForm.newPassword.first, {'attr': {'id': passwordForm.newPassword.first.vars.id}}) }}
+    </div>
+
+
+    <br>
+
+    <div class="form-input">
+        <label for="{{ passwordForm.newPassword.second.vars.id }}">Confirmer le mot de passe :</label>
+        {{ form_widget(passwordForm.newPassword.second, {'attr': {'id': passwordForm.newPassword.second.vars.id}}) }}
+    </div>
+    {{ form_errors(passwordForm.newPassword.second) }}
+    {{ form_errors(passwordForm.newPassword.first) }}
+
+
+    <br>
+
+    <button type="submit">Changer le mot de passe</button>
+    {{ form_end(passwordForm) }}
 {% endblock %}
+
+
+

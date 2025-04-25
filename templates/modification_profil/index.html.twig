@@ -2,47 +2,36 @@
 
 {% block title %}Soodle | Modifier son profil{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/createUE.css?v=123') }}">
 {% endblock %}
 {% block body %}
-    <form>
+    {{ form_start(profilForm) }}
         <div class="title">
             <h1> Formulaire de modification profil</h1>
         </div>
-
         <div class="form-input">
-            <div><label for="nom"> Nom :</label></div>
-            <input type="text" id="nom">
+            <div><label for="profil_nom"> Nom :</label></div>
+            {{ form_widget(profilForm.nom) }}
 
         </div>
         <br>
-
         <div class="form-input" >
-            <div> <label for="prenom"> Prénom : </label> </div>
-            <input type="text" id="prenom">
-            </label>
-        </div>
-        <br>
+            <div> <label for="profil_prenom"> Prénom : </label> </div>
+            {{ form_widget(profilForm.prenom) }}
 
-        <div class="form-input" >
-            <div> <label for="mail"> Mail : </label> </div>
-            <input type="email" id="mail">
-            </label>
         </div>
         <br>
         <div class="form-input" >
-            <div>
-                <label for="image">Image</label>
-            </div>
-            <div>
-                <input class="file" type="file" id="image">
-                <label for="image"><p class="televerse" id="upload-text"> <i class="fa-solid fa-upload"></i> Televerser votre image</p></label>
-            </div>
-
+            <div> <label for="profil_email"> Mail : </label> </div>
+            {{ form_widget(profilForm.email) }}
         </div>
-
-
+        <br>
+        <div class="form-input" >
+            <div><label for="image">Image</label></div>
+            {{ form_widget(profilForm.profilPhoto) }}
+        </div>
+        {{ form_errors(profilForm.profilPhoto) }}
         <br>
         <button type="submit">Valider</button>
-    </form>
+    {{ form_end(profilForm) }}
 {% endblock %}
