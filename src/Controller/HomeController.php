@@ -12,9 +12,11 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): RedirectResponse
     {
-        if ($this->getUser()) {
+        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('app_admin');
+        } else {
             return $this->redirectToRoute('app_cours');
         }
-        return new RedirectResponse('/login');
+
     }
 }

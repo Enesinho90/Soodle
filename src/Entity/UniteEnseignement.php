@@ -67,6 +67,7 @@ class UniteEnseignement
     }
 
     public function setIntitule(string $intitule): static
+
     {
         $this->intitule = $intitule;
 
