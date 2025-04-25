@@ -11,11 +11,8 @@
     </div>
     <div class="container-profil">
         <div class="left-profil">
-            {% if user.avatar %}
+
                 <img src="{{ asset('uploads/avatar/' ~ user.avatar) }}" class="profil-avatar">
-                {% else %}
-                    <img src="{{ asset('uploads/avatar/default.jpg') }}" class="profil-avatar">
-            {% endif %}
             <br>
         </div>
         <div class="right-profil">

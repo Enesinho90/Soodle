@@ -43,7 +43,7 @@ class CreateUserController extends AbstractController
                     $user->setRoles(['ROLE_PROF','ROLE_ADMIN']);
                     break;
             }
-            $user->setAvatar('default.jpg');
+            $user->setAvatar('default.png');
             $entityManager->persist($user);
             $entityManager->flush();
 
