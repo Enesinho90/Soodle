@@ -153,6 +153,71 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("ueButton").addEventListener("click", displayUEs)
     document.getElementById("userButton").addEventListener("click", displayUsers)
 
+    $(document).on('click', '.delete-ue', function(event) {
+        event.preventDefault();
+
+        const button = $(this);
+        const ueId = button.data('id');
+        const row = button.closest('tr');
+
+        const confirmation = confirm('Êtes-vous sûr de vouloir supprimer cette unité d\'enseignement ?');
+
+        if (confirmation) {
+            $.ajax({
+                url: '/admin/delete/ue/' + ueId,
+                type: 'POST',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // Remove the row from the table
+                        row.fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('Erreur: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erreur AJAX:', error);
+                    alert('Une erreur est survenue lors de la suppression.');
+                }
+            });
+        }
+    });
+
+    // User deletion handler
+    $(document).on('click', '.delete-user', function(event) {
+        event.preventDefault();
+
+        const button = $(this);
+        const userId = button.data('id');
+        const row = button.closest('tr');
+
+        const confirmation = confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');
+
+        if (confirmation) {
+            $.ajax({
+                url: '/admin/delete/user/' + userId,
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // Remove the row with animation
+                        row.fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('Erreur: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erreur AJAX:', error);
+                    alert('Une erreur est survenue lors de la suppression de l\'utilisateur.');
+                }
+            });
+        }
+    });
 });
 
 

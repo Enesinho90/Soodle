@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Soodle | Admin {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('style/admin.css') }}?v=123">
 {% endblock %}
 {% block body %}
+    <meta name="csrf-token" content="{{ csrf_token('delete-user') }}">
+
     {% include 'partials/navbar.html.twig' %}
     <div class="title">
         <h1> Administration</h1>
     </div>
     <div class="container">
         <div class="informations">
-            <p>Il y a actuellement <span class="green">1609</span> étudiants et <span class="green">72</span> unités
+            <p>Il y a actuellement <span class="green">{{ utilisateurs | length }}</span> étudiants et <span class="green">{{ cours | length }}</span> unités
                 d'enseignement</p>
         </div>
         <div class="buttons">
@@ -24,67 +25,63 @@
         </div>
         <table id="users">
             {% for utilisateur in utilisateurs %}
-            <tr>
-                <td><img class=image-table src="{{ asset('uploads/avatar/' ~ utilisateur.avatar) }}" alt="Image UE"></td>
-                <td>{{ utilisateur.prenom }}  {{ utilisateur.nom }}</td>
-                <td>{% for role in utilisateur.roles %}
-                        {% if (role == 'ROLE_ADMIN') %}
-                            Administrateur
-                        {% endif %}
-                        {% if (role == 'ROLE_PROF') %}
-                            Professeur
-                        {% endif %}
-                        {% if (role == 'ROLE_ETUDIANT') %}
-                            Etudiant
-                        {% endif %}
-                    {% endfor %}
-                </td>
-                <td>{{ utilisateur.email }}</td>
-                <td class="interact-buttons">
-                    <form action="{{ path('app_deleteUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
-                        <button class="small" type="submit">
-                            <i class="fa-solid fa-book"></i>
-                        </button>
-                    </form>
+                <tr data-user-id="{{ utilisateur.id }}">
+                    <td><img class="image-table" src="{{ asset('uploads/avatar/' ~ utilisateur.avatar) }}" alt="Avatar"></td>
+                    <td>{{ utilisateur.prenom }} {{ utilisateur.nom }}</td>
+                    <td>{% for role in utilisateur.roles %}
+                            {% if (role == 'ROLE_ADMIN') %}
+                                Administrateur
+                            {% endif %}
+                            {% if (role == 'ROLE_PROF') %}
+                                Professeur
+                            {% endif %}
+                            {% if (role == 'ROLE_ETUDIANT') %}
+                                Etudiant
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ utilisateur.email }}</td>
+                    <td class="interact-buttons">
+                        <form action="{{ path('app_affecter', { 'id': utilisateur.id }) }}" method="post">
+                            <button class="small" type="submit">
+                                <i class="fa-solid fa-book"></i>
+                            </button>
+                        </form>
 
-                    <form action="{{ path('app_editUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="">
-                        <button class="small" type="submit">
-                            <i class="fa-solid fa-pencil"></i>
-                        </button>
-                    </form>
+                        <form action="{{ path('app_editUser', { 'id': utilisateur.id }) }}" method="post"
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir modifier cet utilisateur ?');">
+                            <button class="small" type="submit">
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                        </form>
 
-                    <form action="{{ path('app_deleteUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
-                        <button class="small" type="submit">
+                        <button class="small delete-user" data-id="{{ utilisateur.id }}">
                             <i class="fa-solid fa-trash"></i>
                         </button>
-                    </form>
-                </td>
-            </tr>
+                    </td>
+                </tr>
             {% endfor %}
-
         </table>
 
         <table class="hide" id="ues">
             {% for cour in cours %}
-            <tr>
-                <td><img class=image-table src="{{ asset('uploads/images/' ~ cour.image) }}" alt="Image UE"></td>
-                <td>{{ cour.code }}</td>
-                <td>{{ cour.intitule }}</td>
-                <td class="interact-buttons">
-                    <form action="{{ path('app_editUE', { 'id': cour.id }) }}" method="post">
-                        <button class="small" type="submit">
-                            <i class="fa-solid fa-pencil"></i>
-                        </button>
-                    </form>
-                    <form action="{{ path('app_deleteUE', { 'id': cour.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
-                        <button class="small" type="submit">
+                <tr data-ue-id="{{ cour.id }}">
+                    <td><img class="image-table" src="{{ asset('uploads/images/' ~ cour.image) }}" alt="Image UE"></td>
+                    <td>{{ cour.code }}</td>
+                    <td>{{ cour.intitule }}</td>
+                    <td class="interact-buttons">
+                        <form action="{{ path('app_editUE', { 'id': cour.id }) }}" method="post"
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir modifier cet UE ?');">
+                            <button class="small" type="submit">
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                        </form>
+                        <button class="small delete-ue" data-id="{{ cour.id }}">
                             <i class="fa-solid fa-trash"></i>
                         </button>
-                    </form>
-                </td>
-            </tr>
+                    </td>
+                </tr>
             {% endfor %}
-
         </table>
 
     </div>
@@ -94,6 +91,11 @@
     <script>
         var createUEUrl = "{{ path('app_createUE') }}";
         var createUserUrl = "{{ path('app_createUser') }}";
+
+
+
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     {{ parent() }}
 {% endblock %}

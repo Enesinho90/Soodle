@@ -15,7 +15,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class CreateUEController extends AbstractController
 {
-
     #[Route('/admin/ue/create', name: 'app_createUE')]
     public function index(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
