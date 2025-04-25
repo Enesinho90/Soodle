@@ -47,7 +47,7 @@ label {
     width: 100%;
 }
 
-button:hover {
+button:hover,input[type="file"]::file-selector-button:hover  {
     background-color: #588157;
     color: #FFFFFF;
     transition: 0.3s;
@@ -83,4 +83,27 @@ select{
     border-radius: 5px;
     border: solid 1px #588157;
 }
+
+input[type="file"] {
+
+    padding: 6px;
+    border: 1px solid #588157; /* Vert comme les autres champs */
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1em;
+    color: #333;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #A3B18A;
+    color: #000000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    margin-right: 16px;
+}
+
 
