@@ -7,6 +7,7 @@ main {
 
 main section {
     width: 80%;
+
 }
 
 /* ========== Structure principale de la section : #contenu-ue ========== */
@@ -43,6 +44,10 @@ main section {
     flex-shrink: 0;
 }
 
+.button-delete {
+    background-color: white;
+    border: none;
+}
 /* Hover commun aux boutons */
 .button-style:hover,
 .button-add:hover,
@@ -137,9 +142,17 @@ main section {
     opacity: 0.5;
 }
 
-/* Icône de message */
-.fa-regular.fa-message {
+/* Icône de message / Icône de partage de fichier */
+.fa-regular.fa-message, .fa-file {
     font-size: 28px;
+}
+.fa-regular.fa-file {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+.fa-regular.fa-file:hover {
+    color: #40916c;
+    transform: scale(1.2) rotate(-5deg);
+    cursor: pointer;
 }
 
 /* Titre + logo + croix */

@@ -1,36 +1,80 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     if (document.body.id === "page-contenu-ue") {
-        console.log("Tu es sur la page contenu UE");
-        const btn = document.getElementById("test");
-        console.log(btn);
-        // Mets ici ton code spécifique à cette page
+        const buttons = document.querySelectorAll('.delete-post-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                const postId = button.dataset.id;
+                const ueId = button.dataset.ue;
+                const token = button.dataset.token;
+
+                const confirmation = confirm("Es-tu sûr de vouloir supprimer ce post ?");
+                if (!confirmation) return;
+
+                const response = await fetch(`/post/${postId}/${ueId}/delete`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `_token=${encodeURIComponent(token)}`
+                });
+
+                if (response.ok) {
+                    // Supprime le post du DOM
+                    const postElement = button.closest('.post');
+                    if (postElement) {
+                        postElement.remove();
+                    }
+                } else {
+                    alert("Erreur lors de la suppression du post.");
+                }
+            });
+        });
     }
+
     if(document.body.id === "page_creation_modification") {
-        console.log("Tu es sur la page création / modification");
         const btnDeMessage = document.getElementById("btnMessage");
         const btnDePartage = document.getElementById("btnPartage");
         const fileUploadContent = document.querySelectorAll(".visibleFile");
+        const inputPostType = document.getElementById('post_type');
+        const inputFile = document.getElementById('post_fichier');
+        const fileName = document.getElementById('file-name');
+        fileName.style.display ="none";
+        //valeur initial
+        inputFile.style.display = "none"
+        inputFile.required = true;
+        inputPostType.value = "1";
+
 
         function toggleButtons(activeBtn, inactiveBtn) {
             activeBtn.classList.add("select");
             inactiveBtn.classList.remove("select");
         }
-
         btnDeMessage.addEventListener("click", () => {
             toggleButtons(btnDeMessage, btnDePartage);
-            fileUploadContent.forEach( (elementCourant) => {
+            fileUploadContent.forEach( (elementCourant) => { //pour enlever le label + le champ
                 elementCourant.classList.add("hiddenFile");
             });
+            inputPostType.value = "0"; // valeur envoyer à symfony pour avoir le bon type de fichier
+            inputFile.required = false;
         })
-
         btnDePartage.addEventListener("click", () => {
             toggleButtons(btnDePartage, btnDeMessage);
             fileUploadContent.forEach( (elementCourant) => {
                 elementCourant.classList.remove("hiddenFile");
             });
-
+            inputPostType.value = "1"; // valeur envoyer à symfony pour avoir le bon type de fichier
+            inputFile.required = true;
         })
+
+        inputFile.addEventListener('change', () => {
+            inputFile.style.display = "block";
+            fileName.style.display = "block";
+            document.getElementById('file-name-text').textContent = inputFile.files[0].name;
+        });
     }
     if(document.body.id === "page-login") {
 

@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Créer/Modifier un post{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/page_creation_modification.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/page_creation_modification.css?v=123') }}">
 {% endblock %}
 {% block id %}page_creation_modification{% endblock %}
 {% block body %}
@@ -12,7 +12,9 @@
         <!-- ====== Section : création / modification ====== -->
         <section id="creation_modification">
             <!-- Bouton retour -->
-            <a href="{{ path('app_cours') }}"> <button class="button-style" type="button">Retour</button></a>
+            <a href="{{ path('app_page_contenue_ue',{id:id_ue}) }}">
+                <button class="button-style" type="button">Retour</button>
+            </a>
 
             <!-- Titre principal -->
             <h1>Créer / Modifier un post</h1>
@@ -34,51 +36,41 @@
         <!-- Fin : creation_modification -->
 
 
+
+
+
         <!-- ====== Section : message-file-content ====== -->
         <section id="message-file-content">
-            <form id="message-file">
+            {{ form_start(postForm, {'attr': {'id': 'message-file'}}) }}
+            <!-- Champ : Titre -->
+            {{ form_label(postForm.titre, 'Titre') }}
+            {{ form_widget(postForm.titre) }}
 
-                <!-- Champ : Titre -->
-                <label for="title-input">Titre</label>
-                <input
-                        id="title-input"
-                        type="text"
-                        placeholder="TD1 - Validation/Remise à Niveau"
-                >
+            <!-- Zone custom d'upload de fichiers -->
+            <p class="file-upload-label  visibleFile ">Fichier</p>
+            <div class="custom-file-upload  visibleFile">
+                <label id="label_file" for="post_fichier">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Choisissez un fichier ou glissez-le ici</span>
+                </label>
+                {{ form_widget(postForm.fichier) }}
+                <span id="file-name" style="display: none;">
+                    <i class="fa-solid fa-file-lines"></i> <span id="file-name-text"></span>
+                </span>
 
-                <!-- Titre section fichiers -->
-                <p class="file-upload-label  visibleFile ">Fichier</p>
-
-                <!-- Zone custom d'upload de fichiers -->
-                <div class="custom-file-upload  visibleFile">
-                    <label for="file-input">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <span>Choisissez un fichier ou glissez-le ici</span>
-                    </label>
-                    <input
-                            id="file-input"
-                            type="file"
-                            multiple
-                    >
-                </div>
-
-                <!-- Champ : Contenu du message -->
-                <label for="message-input">Contenu du message</label>
-                <textarea
-                        id="message-input"
-                        placeholder="Entrez le contenu du message"
-                ></textarea>
+            </div>
+            {{ form_label(postForm.contenu, 'Contenu du message') }}
+            {{ form_widget(postForm.contenu) }}
 
 
-                <!-- Bouton de soumission -->
-                <button id="submit-message-file" type="submit">
-                    <i class="fa-regular fa-paper-plane"></i>
-                    Publier
-                </button>
+            {{ form_row(postForm.type) }}
 
-            </form>
+            <button id="submit-message-file" type="submit">
+                <i class="fa-regular fa-paper-plane"></i>
+                Publier
+            </button>
+            {{ form_end(postForm) }}
         </section>
-        <!-- Fin : message-file-content -->
     </main>
 
 

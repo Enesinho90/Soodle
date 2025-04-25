@@ -61,12 +61,12 @@ class UniteEnseignement
         return $this;
     }
 
-    public function getIntitulé(): ?string
+    public function getIntitule(): ?string
     {
         return $this->intitulé;
     }
 
-    public function setIntitulé(string $intitulé): static
+    public function setIntitule(string $intitulé): static
     {
         $this->intitulé = $intitulé;
 
