@@ -108,6 +108,14 @@ tr:nth-child(even) {
 .hide {
     display: none;
 }
+.small{
+    width: auto;
+    padding: 5px;
+    font-size: 100%;
+}
+.small:hover{
+    background-color: #bab8b8;
+}
 
 @media (max-width:600px) {
     .image-table{

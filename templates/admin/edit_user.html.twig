@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Modifier un utilisateur{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="title">
+        <h1>Modifier un utilisateur</h1>
+    </div>
+
+    <div class="form-input">
+        <div>{{ form_label(form.nom, 'Nom :') }}</div>
+        {{ form_widget(form.nom, {'attr': {'id': 'nom'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(form.prenom, 'Prénom :') }}</div>
+        {{ form_widget(form.prenom, {'attr': {'id': 'prenom'}}) }}
+        {{ form_errors(form.prenom) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(form.email, 'Mail :') }}</div>
+        {{ form_widget(form.email, {'attr': {'id': 'mail'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(form.roleChoice, 'Rôle :') }}</div>
+        {{ form_widget(form.roleChoice, {'attr': {'id': 'role'}}) }}
+        {{ form_errors(form.roleChoice) }}
+    </div>
+    <br>
+
+    <div class="form-input">
+        <div>{{ form_label(form.plainPassword, 'Mot de passe :') }}</div>
+        {{ form_widget(form.plainPassword, {'attr': {'id': 'mdp'}}) }}
+
+    </div>
+    <br>
+    {{ form_errors(form.plainPassword) }}
+    <br>
+
+    <button type="submit" class="btn">Modifier</button>
+    {{ form_end(form) }}
+
+{% endblock %}

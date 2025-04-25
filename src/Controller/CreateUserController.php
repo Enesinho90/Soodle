@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CreateUserController extends AbstractController
 {
-    #[Route('/admin/createUser', name: 'app_createUser')]
+    #[Route('/admin/user/create', name: 'app_createUser')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Utilisateur();
@@ -43,6 +43,7 @@ class CreateUserController extends AbstractController
                     $user->setRoles(['ROLE_PROF','ROLE_ADMIN']);
                     break;
             }
+            $user->setAvatar('default.jpg');
             $entityManager->persist($user);
             $entityManager->flush();
 

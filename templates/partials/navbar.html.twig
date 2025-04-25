@@ -16,18 +16,26 @@
         </div>
         <div class="navbar-right">
             <i class="fa-regular fa-bell"></i>
-            <img id="profil-picture" class="avatar" src="{{ asset('images/avatar.jpg')}}" alt="avatar">
+            <img id="profil-picture" class="avatar" src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}" alt="avatar">
         </div>
     </div>
     <div id="profil-popup">
         <div class="profil-informations">
-            <img class="avatar-onclick" src="{{ asset('images/avatar.jpg')}}" alt="avatar">
+            <img class="avatar-onclick" src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}" alt="avatar">
             <div class="person">
-                <p class="username"> {{app.user.nom | upper}}{{app.user.prenom}} </p>
+                <p class="username"> {{app.user.nom | upper}} {{app.user.prenom}} </p>
                 <p class="usermail"> {{app.user.email}}</p>
                 <p class="userrole"> {% for role in app.user.roles %}
-                        {{role}}
-                    {% endfor %}</p>
+                                        {% if (role == 'ROLE_ADMIN') %}
+                                            Administrateur
+                                        {% endif %}
+                                        {% if (role == 'ROLE_PROF') %}
+                                            Professeur
+                                        {% endif %}
+                                        {% if (role == 'ROLE_ETUDIANT') %}
+                                            Etudiant
+                                        {% endif %}
+                                    {% endfor %}</p>
             </div>
 
         </div>
