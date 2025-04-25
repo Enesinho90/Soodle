@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CreateUserController extends AbstractController
 {
-    #[Route('/admin/user/create', name: 'app_createUser')]
+    #[Route('/admin/create/user', name: 'app_createUser')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Utilisateur();

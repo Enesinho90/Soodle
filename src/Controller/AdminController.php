@@ -142,7 +142,7 @@ final class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
 
-        return $this->render('create_ue/index.html.twig', [
+        return $this->render('admin/edit_ue.html.twig', [
             'UEForm' => $form,
         ]);
     }
