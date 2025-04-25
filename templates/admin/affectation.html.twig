@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soodle | Affecter des UE{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+{% endblock %}
+{% block body %}
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+    {{ form_start(AffectationForm) }}
+    <div class="title">
+        <h1>Affecter une unité d'enseignement à {{ user.nom }} {{ user.prenom  }}</h1>
+    </div>
+
+
+
+    <div class="form-input">
+        <div>{{ form_label(AffectationForm.uniteEnseignement, "Unité d'enseignement :") }}</div>
+        {{ form_widget(AffectationForm.uniteEnseignement, {'attr': {'id': 'uniteEnseignement'}}) }}
+        {{ form_errors(AffectationForm.uniteEnseignement) }}
+    </div>
+    <br>
+
+
+    <button type="submit" class="btn">Ajouter</button>
+
+    {{ form_end(AffectationForm) }}
+
+{% endblock %}

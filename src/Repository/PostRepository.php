@@ -22,6 +22,15 @@ class PostRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findPostsForUnitesEnseignement(array $ues): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.uniteEnseignement IN (:ues)')
+            ->setParameter('ues', $ues)
+            ->orderBy('p.date', 'DESC') // facultatif : pour trier par date
+            ->getQuery()
+            ->getResult();
+    }
 
     //    /**
     //     * @return Post[] Returns an array of Post objects
