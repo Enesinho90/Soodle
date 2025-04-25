@@ -135,6 +135,10 @@ main section {
     border: 2px dotted #588157;
     padding: 40px 0;
 }
+
+
+
+
 .hiddenFile {
     display: none;
 }
@@ -184,4 +188,24 @@ a{
     display: block;
     text-decoration: none;
     color: inherit;
+}
+#file-name {
+    margin-top: 10px;
+    font-weight: 500;
+    color: #1b4332;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #edf6f9;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #a3b18a;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+#file-name i {
+    color: #3a5a40;
+    font-size: 18px;
 }

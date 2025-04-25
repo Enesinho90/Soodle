@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Contenue UE{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/page_contenue_ue.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/page_contenue_ue.css') }}" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 {% block id %}page-contenu-ue{% endblock %}
 {% block body %}
@@ -14,7 +14,7 @@
             <!-- Bouton de retour -->
             <a href="{{ path('app_cours') }}"><button class="button-style" type="button">Retour</button></a>
             <!-- Titre principal -->
-            <h1>WE4A - Développement Web</h1>
+            <h1>{{ uniteEnseignement.code }} - {{uniteEnseignement.getIntitule()}} </h1>
             <!-- Sous-titre participants -->
             <p class="participants">
                 <a class="link-participants" href="{{ path('app_pariticipants') }}">Participants</a>
@@ -34,7 +34,7 @@
 
                 <!-- Bouton d'ajout -->
                 {% if is_granted('ROLE_PROF') %}
-                    <a href="{{ path('app_page_creation_modification') }}" class="button-add">
+                    <a href="{{ path('app_page_creation_modification',{id :uniteEnseignement.id})}}" class="button-add">
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 {% endif %}
@@ -48,64 +48,48 @@
         <!-- ====== Section : Posts ====== -->
 
         <section id="posts">
-
             {% for post in posts %}
-                <div class="post">
-                    <div class="titre-logo-supp">
-                        <div class="titre-logo">
-                            <i class="fa-regular fa-message"></i>
-                            <h3>post.titre</h3>
+                {% if post.UniteEnseignement.id == uniteEnseignement.id %}
+                    <div class="post">
+                        <div class="titre-logo-supp">
+                            <div class="titre-logo">
+                                {% if (post.type == 0) %}
+                                    <i class="fa-regular fa-message"></i>
+                                {% endif %}
+
+                                {% if (post.type == 1) %}
+                                    <a href="{{ asset('files/' ~ post.uniteEnseignement.code ~ '/' ~ post.fichier) }}">
+                                        <i class="fa-regular fa-file"></i>
+                                    </a>
+                                {% endif %}
+                                    <h3>{{ post.titre }}</h3>
+                            </div>
+                            {% if is_granted('ROLE_PROF') %}
+                                <button
+                                        class="button-delete delete-post-btn"
+                                        data-id="{{ post.id }}"
+                                        data-ue="{{ uniteEnseignement.id }}"
+                                        data-token="{{ csrf_token('delete' ~ post.id) }}">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            {% endif %}
+
                         </div>
-                        <i class="fa-solid fa-xmark"></i>
+                        <p>Posté par {{ post.utilisateur.prenom }}  {{ post.utilisateur.nom }} le {{ post.date|date('d/m/Y H:i') }}</p>
+                        <div class="contenu-message"> {{ post.contenu }} </div>
+                        {% if is_granted('ROLE_PROF') %}
+                            <div class="ajouter-modifier">
+                                <a href="{{ path('app_page_modification',{id_ue :uniteEnseignement.id,id_post : post.id}) }}">
+                                    <input class="button-modifier" type="button" value="Modifier">
+                                </a>
+                            </div>
+                        {% endif %}
+                        <hr>
                     </div>
-
-                    <p>Posté par {{ post.utilista }} il y a 2j</p>
-                    <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
-                    <div class="ajouter-modifier">
-                        <button class="button-ajouter" type="button">Ajouter</button>
-                        <button class="button-modifier" type="button">Modifier</button>
-                    </div>
-                    <hr>
-                </div>
-
+                {% endif %}
             {% endfor %}
-
-            <!-- Un post -->
-            <div class="post">
-                <div class="titre-logo-supp">
-                    <div class="titre-logo">
-                        <i class="fa-regular fa-message"></i>
-                        <h3>TD1 - Validation/Remise à Niveau</h3>
-                    </div>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-
-                <p>Posté par M.Dupont il y a 2j</p>
-                <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
-                <div class="ajouter-modifier">
-                    <button class="button-ajouter" type="button">Ajouter</button>
-                    <button class="button-modifier" type="button">Modifier</button>
-                </div>
-                <hr>
-            </div>
-            <!-- Deuxième post identique pour l'exemple -->
-            <div class="post">
-                <div class="titre-logo-supp">
-                    <div class="titre-logo">
-                        <i class="fa-regular fa-message"></i>
-                        <h3>TD1 - Validation/Remise à Niveau</h3>
-                    </div>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <p>Posté par M.Dupont il y a 2j</p>
-                <div class="contenu-message"> Le prochain cours se déroulera en B204 </div>
-                <div class="ajouter-modifier">
-                    <button class="button-ajouter" type="button">Ajouter</button>
-                    <button class="button-modifier" type="button">Modifier</button>
-                </div>
-                <hr>
-            </div>
         </section>
         <!-- ====== Fin section : Posts ====== -->
     </main>
+
 {% endblock %}

@@ -46,6 +46,7 @@ security:
         - { path: ^/login, roles: PUBLIC_ACCESS } # login accessible par tous
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/prof, roles: ROLE_PROF }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
