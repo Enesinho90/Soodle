@@ -19,7 +19,7 @@ class UniteEnseignement
     private ?string $code = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $intitulé = null;
+    private ?string $intitule = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -63,12 +63,13 @@ class UniteEnseignement
 
     public function getIntitule(): ?string
     {
-        return $this->intitulé;
+        return $this->intitule;
     }
 
-    public function setIntitule(string $intitulé): static
+    public function setIntitule(string $intitule): static
+
     {
-        $this->intitulé = $intitulé;
+        $this->intitule = $intitule;
 
         return $this;
     }

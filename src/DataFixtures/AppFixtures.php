@@ -56,12 +56,12 @@ class AppFixtures extends Fixture
         //creation des UE
         $uniteEnseignement_1 = new UniteEnseignement();
         $uniteEnseignement_1->setCode('WE4A');
-        $uniteEnseignement_1->setIntitulé("Développement Web");
+        $uniteEnseignement_1->setIntitule("Développement Web");
         $manager->persist($uniteEnseignement_1);
 
         $uniteEnseignement_2 = new UniteEnseignement();
         $uniteEnseignement_2->setCode('SI40');
-        $uniteEnseignement_2->setIntitulé("Systèmes d'information");
+        $uniteEnseignement_2->setIntitule("Systèmes d'information");
         $manager->persist($uniteEnseignement_2);
 
 

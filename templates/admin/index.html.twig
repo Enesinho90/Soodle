@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Admin {% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/admin.css') }}?v=123">
 {% endblock %}
 {% block body %}
     {% include 'partials/navbar.html.twig' %}
@@ -25,17 +25,39 @@
         <table id="users">
             {% for utilisateur in utilisateurs %}
             <tr>
-                <td><img class=image-table src="{{  asset('images/avatar.jpg')  }}"></td>
+                <td><img class=image-table src="{{ asset('uploads/avatar/' ~ utilisateur.avatar) }}" alt="Image UE"></td>
                 <td>{{ utilisateur.prenom }}  {{ utilisateur.nom }}</td>
                 <td>{% for role in utilisateur.roles %}
-                        {{ role }}
+                        {% if (role == 'ROLE_ADMIN') %}
+                            Administrateur
+                        {% endif %}
+                        {% if (role == 'ROLE_PROF') %}
+                            Professeur
+                        {% endif %}
+                        {% if (role == 'ROLE_ETUDIANT') %}
+                            Etudiant
+                        {% endif %}
                     {% endfor %}
                 </td>
                 <td>{{ utilisateur.email }}</td>
                 <td class="interact-buttons">
-                    <i class="fa-solid fa-book"></i>
-                    <i class="fa-solid fa-pencil"></i>
-                    <i class="fa-solid fa-trash"></i>
+                    <form action="{{ path('app_deleteUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
+                        <button class="small" type="submit">
+                            <i class="fa-solid fa-book"></i>
+                        </button>
+                    </form>
+
+                    <form action="{{ path('app_editUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="">
+                        <button class="small" type="submit">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                    </form>
+
+                    <form action="{{ path('app_deleteUser', { 'id': utilisateur.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
+                        <button class="small" type="submit">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
@@ -45,12 +67,20 @@
         <table class="hide" id="ues">
             {% for cour in cours %}
             <tr>
-                <td><img class=image-table src="{{ asset('images/background-cours1.jpg') }}"></td>
+                <td><img class=image-table src="{{ asset('uploads/images/' ~ cour.image) }}" alt="Image UE"></td>
                 <td>{{ cour.code }}</td>
-                <td>{{ cour.intitulé }}</td>
+                <td>{{ cour.intitule }}</td>
                 <td class="interact-buttons">
-                    <i class="fa-solid fa-pencil"></i>
-                    <i class="fa-solid fa-trash"></i>
+                    <form action="{{ path('app_editUE', { 'id': cour.id }) }}" method="post">
+                        <button class="small" type="submit">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                    </form>
+                    <form action="{{ path('app_deleteUE', { 'id': cour.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr ?');">
+                        <button class="small" type="submit">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
