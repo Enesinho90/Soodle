@@ -29,6 +29,22 @@ final class CoursController extends AbstractController
             'actualites' => $actualites,
         ]);
     }
+    #[Route('/actualites/{offset}', name: 'load_more_actualites', methods: ['GET'])]
+    public function loadMoreActualites(int $offset, PostRepository $postRepository): Response
+    {
+        // Définir combien d'actualités on veut récupérer à chaque appel
+        $limit = 5;
+
+        // Récupérer les actualités à partir de l'offset
+        $actualites = $postRepository->findBy([], ['date' => 'DESC'], $limit, $offset);
+
+        // Retourner une réponse JSON avec les actualités
+        return $this->json([
+            'actualites' => $this->renderView('cours/_actualites.html.twig', [
+                'actualites' => $actualites
+            ])
+        ]);
+    }
 
 
 }

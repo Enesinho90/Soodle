@@ -9,6 +9,7 @@ use App\Entity\Utilisateur;
 use App\Form\AffectationType;
 use App\Form\RegistrationFormType;
 use App\Form\UniteEnseignementFormType;
+use App\Repository\AffectationRepository;
 use App\Repository\UniteEnseignementRepository;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -202,52 +203,66 @@ final class AdminController extends AbstractController
         ]);
     }
     #[Route('/admin/affectation/{id}', name: 'app_affecter')]
-    public function affecter(Utilisateur $user, EntityManagerInterface $entityManager, Request $request): Response
-    {
-        $affectation = new Affectation();
-        $affectation->setUtilisateur($user);
+public function affecter(Utilisateur $user,AffectationRepository $affectationRepository, EntityManagerInterface $entityManager, Request $request): Response
+{
+    $affectation = new Affectation();
+    $affectation->setUtilisateur($user);
 
-        // Create the form for Affectation
-        $form = $this->createForm(AffectationType::class, $affectation);
-        $form->handleRequest($request);
+    $form = $this->createForm(AffectationType::class, $affectation);
+    $form->handleRequest($request);
 
-        // Check if form is submitted and valid
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Get the selected UniteEnseignement from the form
-            $uniteEnseignement = $form->get('uniteEnseignement')->getData();
+    $cours = $affectationRepository->findUEByUserId($user->getId());
+    // Transformer $cours (Affectation[]) en $ues (UniteEnseignement[])
+    $ues = array_map(function ($affectation) {
+        return $affectation->getUniteEnseignement();
+    }, $cours);
 
-            // Check if the user already has this UniteEnseignement assigned
-            $existingAffectation = $entityManager->getRepository(Affectation::class)
-                ->findOneBy([
-                    'utilisateur' => $user,
-                    'uniteEnseignement' => $uniteEnseignement,
-                ]);
+    if ($form->isSubmitted() && $form->isValid()) {
+        $uniteEnseignement = $form->get('uniteEnseignement')->getData();
 
-            if ($existingAffectation) {
-                // If an Affectation already exists with the same UniteEnseignement, show an error message
-                $this->addFlash('error', "L'utilisateur est déjà inscrit a cette UE");
+        $existingAffectation = $entityManager->getRepository(Affectation::class)
+            ->findOneBy([
+                'utilisateur' => $user,
+                'uniteEnseignement' => $uniteEnseignement,
+            ]);
 
-                // Optionally, you can redirect the user or return to the form page
-                return $this->redirectToRoute('app_affecter', ['id' => $user->getId()]);
-            }
-
-            // Otherwise, set the UniteEnseignement and other details, then save the new Affectation
+        if ($existingAffectation) {
+            // Si l'affectation existe, on la supprime
+            $entityManager->remove($existingAffectation);
+            $entityManager->flush();
+            $this->addFlash('success', 'UE supprimée avec succès.');
+        } else {
+            // Sinon, on l'ajoute
             $affectation->setUniteEnseignement($uniteEnseignement);
             $affectation->setDateInscription(new \DateTimeImmutable());
 
-            // Persist the new Affectation in the database
             $entityManager->persist($affectation);
             $entityManager->flush();
-
-            // Redirect to another route (e.g., admin dashboard)
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash('success', 'UE ajoutée avec succès.');
         }
 
-        // Render the form in the template
-        return $this->render('admin/affectation.html.twig', [
-            'AffectationForm' => $form->createView(),
-            'user' => $user,
-        ]);
+        return $this->redirectToRoute('app_affecter', ['id' => $user->getId()]);
     }
+
+    $codesUEString=[];
+    foreach($ues as $ue){
+        $codesUEString[] = $ue->getCode();
+    }
+
+    $idUEString=[];
+    foreach($ues as $ue){
+        $idUEString[] = $ue->getId();
+    }
+
+
+
+
+    return $this->render('admin/affectation.html.twig', [
+        'AffectationForm' => $form->createView(),
+        'user' => $user,
+        'idUEString' => $idUEString,
+        'codesUESring' => $codesUEString,
+    ]);
+}
 
 }

@@ -151,3 +151,7 @@ a{
     text-decoration: none;
     color: inherit;
 }
+.information{
+    color: #3A5A40;
+    font-weight: bold;
+}

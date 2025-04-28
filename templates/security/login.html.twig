@@ -3,7 +3,7 @@
 {% block title %}Soodle | Login{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/login.css') }}?v=123">
+    <link rel="stylesheet" href="{{ asset('style/login.css') }}?v=13">
 
 {% endblock %}
 
@@ -26,13 +26,13 @@
                     </div>
                 {% endif %}
 
-                <p class="slogan">Ta plateforme, ton savoir, ton avenir.</p>
+                <p class="slogan"> Comme <span class="information">{{ users | length }} personnes</span>, viens profiter de plus de <span class="information">{{ ues | length }} cours différents</span> et <span class="information">{{ posts | length}} posts.</span> </p>
                 <h1>Connecte-toi à Soodle</h1>
 
                 <!-- <== Champ identifiant > -->
                 <label for="login-input">Email</label>
                 <div class="login-input-container">
-                    <input type="email" value="{{ last_username }}" name="email" id="login-input"  autocomplete="email" required autofocus placeholder="eem.eup@soodle.fr">
+                    <input type="email" value="{{ last_username }}" name="email" id="login-input"  autocomplete="email" required autofocus placeholder="nomprenom@soodle.fr">
                     <i class="fa-regular fa-envelope"></i>
                 </div>
                 <!-- <== fin de Champ identifiant > -->

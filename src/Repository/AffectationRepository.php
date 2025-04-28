@@ -24,6 +24,16 @@ class AffectationRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findUEByUserId(int $userId)
+    {
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.uniteEnseignement', 'ue') // On joint vers l'entité UniteEnseignement
+            ->addSelect('ue')
+            ->andWhere('a.utilisateur = :userId')    // On filtre sur l'utilisateur
+            ->setParameter('userId', $userId)             // On récupère directement les unités d'enseignement
+            ->getQuery()
+            ->getResult();
+    }
 
     //    /**
     //     * @return Affectation[] Returns an array of Affectation objects

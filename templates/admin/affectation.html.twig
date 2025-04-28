@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Affecter des UE{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/createUE.css') }}?v=255">
 {% endblock %}
 {% block body %}
     {% for label, messages in app.flashes %}
@@ -14,23 +14,71 @@
             </ul>
         </div>
     {% endfor %}
+
+
+
     {{ form_start(AffectationForm) }}
     <div class="title">
-        <h1>Affecter une unité d'enseignement à {{ user.nom }} {{ user.prenom  }}</h1>
+        <h1>Affecter une unité d'enseignement à {{ user.nom }} {{ user.prenom }}</h1>
+    </div>
+    <div>
+        Cours déjà suivies :
+        <span class="codeUe">
+        {% for element in codesUESring %}
+            {{ element }}
+        {% endfor %}
+        </span>
+
     </div>
 
+    <p>
 
+    </p>
+    <br>
 
     <div class="form-input">
         <div>{{ form_label(AffectationForm.uniteEnseignement, "Unité d'enseignement :") }}</div>
-        {{ form_widget(AffectationForm.uniteEnseignement, {'attr': {'id': 'uniteEnseignement'}}) }}
+        {{ form_widget(AffectationForm.uniteEnseignement, {'attr': {'code': 'uniteEnseignement'}}) }}
         {{ form_errors(AffectationForm.uniteEnseignement) }}
     </div>
+
     <br>
-
-
-    <button type="submit" class="btn">Ajouter</button>
+    <button type="submit" class="btn" id="actionButton">Ajouter</button>
 
     {{ form_end(AffectationForm) }}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Passer la liste idUEString du backend à JavaScript
+            const idUEString = {{ idUEString|json_encode|raw }};
+
+            // Fonction pour mettre à jour l'état du bouton en fonction de la sélection
+            function updateButtonState(selectedValue) {
+                const button = document.getElementById('actionButton');
+                if (idUEString.includes(parseInt(selectedValue))) {
+                    button.textContent = 'Supprimer';
+                    button.style.backgroundColor = '#D90000'; // Changer la couleur du bouton en rouge
+                } else {
+                    button.textContent = 'Ajouter';
+                    button.style.backgroundColor = '#A3B18A'; // Couleur de fond de l'état normal
+                }
+            }
+
+            // Vérifier l'état du bouton immédiatement après le chargement de la page
+            const selectElement = document.getElementById('affectation_uniteEnseignement');
+            const selectedValue = selectElement.value;
+            updateButtonState(selectedValue); // Mettre à jour le bouton selon la sélection par défaut
+
+            // Écouter l'événement de changement sur le select
+            selectElement.addEventListener('change', function() {
+                let selectedValue = this.value;
+                console.log("Valeur sélectionnée : ", selectedValue);
+                updateButtonState(selectedValue); // Mettre à jour le bouton lorsqu'un changement survient
+            });
+        });
+    </script>
 {% endblock %}

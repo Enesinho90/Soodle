@@ -16,10 +16,6 @@ class AffectationType extends AbstractType
     {
         $builder
 
-            /*->add('utilisateur', EntityType::class, [
-                'class' => Utilisateur::class,
-                'choice_label' => 'nom',
-            ])*/
             ->add('uniteEnseignement', EntityType::class, [
                 'class' => UniteEnseignement::class,
                 'choice_label' => 'code',

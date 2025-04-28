@@ -31,6 +31,27 @@ button{
     background-color: #A3B18A;
     color: #000000;
 }
+
+.btn{
+    max-width: 350px;
+    padding: 15px;
+    font-size: 22px;
+    border-radius: 10px;
+    border: solid 1px #A3B18A;
+    background-color: #A3B18A;
+    color: #000000;
+}
+
+.btn{
+    max-width: 350px;
+    padding: 15px;
+    font-size: 22px;
+    border-radius: 10px;
+    border: solid 1px #A3B18A;
+    background-color: #A3B18A;
+    color: #000000;
+}
+
 input{
     width: 500px;
     margin-left: 15px;
@@ -104,6 +125,11 @@ input[type="file"]::file-selector-button {
     font-weight: 500;
     transition: background 0.3s ease;
     margin-right: 16px;
+}
+
+.codeUe{
+    color: #344E41;
+    font-weight: bold;
 }
 
 

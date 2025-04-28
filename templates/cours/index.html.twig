@@ -2,7 +2,7 @@
 
 {% block title %}Soodle | Mes cours{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/cours.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/cours.css') }}?v123">
 {% endblock %}
 {% block body %}
 
@@ -29,22 +29,69 @@
         <h1> Actualités</h1>
     </div>
     <div class="actuality-container">
-            <div class="actualities">
-                {% for post in actualites %}
-                    <p>
-                        <span class="professor">• {{ post.utilisateur.nom }} {{ post.utilisateur.prenom }}</span>
-                        a posté
-                        {% if post.type == 'fichier' %}
-                            un nouveau fichier, « {{ post.titre }} »
-                        {% else %}
-                            un nouveau message « {{ post.titre }} »
-                        {% endif %}
-                        dans {{ post.uniteEnseignement.code }} le {{ post.date|date('d/m/Y') }}
-                    </p>
-                {% else %}
-                    <p>Aucune actualité pour le moment.</p>
-                {% endfor %}
-            </div>
-        <button> Voir plus ...</button>
+        <div class="actualities">
+            {% for post in actualites[:5] %}
+                <p>
+                    <span class="professor">• {{ post.utilisateur.nom }} {{ post.utilisateur.prenom }}</span>
+                    a posté
+                    {% if post.type == 'fichier' %}
+                        un nouveau fichier, « {{ post.titre }} »
+                    {% else %}
+                        un nouveau message « {{ post.titre }} »
+                    {% endif %}
+                    dans {{ post.uniteEnseignement.code }} le {{ post.date|date('d/m/Y') }}
+                </p>
+            {% else %}
+                <p>Aucune actualité pour le moment.</p>
+            {% endfor %}
+        </div>
+
+            <button id="voirPlusBtn">Voir plus...</button>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const voirPlusButton = document.getElementById('voirPlusBtn');
+            let offset = 5; // Initialiser l'offset pour récupérer les 5 premières actualités
+
+            voirPlusButton.addEventListener('click', function() {
+                // Désactiver le bouton pour éviter plusieurs clics simultanés
+                voirPlusButton.disabled = true;
+                voirPlusButton.innerText = 'Chargement...';
+
+                // Faire la requête AJAX pour charger plus d'actualités
+                fetch(`/actualites/${offset}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Ajouter les nouvelles actualités dans le conteneur
+                        const actualitesContainer = document.querySelector('.actualities');
+                        actualitesContainer.insertAdjacentHTML('beforeend', data.actualites);
+
+                        // Mettre à jour l'offset pour la prochaine requête (prochain lot de 5)
+                        offset += 5;
+                        console.log(offset);
+                        if( offset > {{ actualites | length }} ){
+                            voirPlusButton.style.display = 'none';
+                        }
+
+                        // Si la réponse contient moins de 5 actualités, on masque le bouton
+                        if (data.actualites.length < 5) {
+                            voirPlusButton.style.display = 'none'; // Masquer le bouton
+                        } else {
+                            // Réactiver le bouton et changer son texte
+                            voirPlusButton.disabled = false;
+                            voirPlusButton.innerText = 'Voir plus ...';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        voirPlusButton.disabled = false;
+                        voirPlusButton.innerText = 'Voir plus ...';
+                    });
+            });
+
+        });
+
+    </script>
 {% endblock %}

@@ -1,0 +1,14 @@
+{% for post in actualites %}
+    <p>
+        <span class="professor">• {{ post.utilisateur.nom }} {{ post.utilisateur.prenom }}</span>
+        a posté
+        {% if post.type == 'fichier' %}
+            un nouveau fichier, « {{ post.titre }} »
+        {% else %}
+            un nouveau message « {{ post.titre }} »
+        {% endif %}
+        dans {{ post.uniteEnseignement.code }} le {{ post.date|date('d/m/Y') }}
+    </p>
+{% else %}
+    <p>Aucune actualité pour le moment.</p>
+{% endfor %}
